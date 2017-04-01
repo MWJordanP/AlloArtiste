@@ -86,14 +86,3 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
-
-# LexikTranslationBundle Configuration
-lexik_translation:
-    fallback_locale: ["%locale%"]
-    managed_locales: ["%locale%"]
-    storage:
-        type: orm
-        object_manager: default
-    resources_registration:
-        type:                 all
-        managed_locales_only: true
