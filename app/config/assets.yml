@@ -1,0 +1,7 @@
+assets:
+    js:
+        admin:
+            - ../common/jquery.min.js
+            - ../common/bootstrap.min.js
+            - ../common/menu.min.js
+            - admin.js
