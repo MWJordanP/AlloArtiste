@@ -1,0 +1,24 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content_title %}
+    {{ 'admin.contact.show.title'|trans }}
+{% endblock %}
+
+
+{% block content %}
+    <p>
+        {{ 'admin.contact.common.user'|trans }} :
+        {{ contact.displayName }}
+    </p>
+    <p>
+        {{ 'admin.contact.common.title'|trans }} :
+        {{ contact.title|title }}
+    </p>
+    <p>
+        {{ 'admin.contact.common.content'|trans }} :
+        {{ contact.content|nl2br }}
+    </p>
+    <a href="{{ path('admin_contact_index') }}" class="btn btn-default">
+        {{ 'common.button.back'|trans }}
+    </a>
+{% endblock %}

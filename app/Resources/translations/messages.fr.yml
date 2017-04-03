@@ -1,3 +1,48 @@
+common:
+    table:
+        action: Actions
+    button:
+        detail: Détail
+        back: Retour
+        edit: Éditer
+        delete: Supprimer
+        save: Sauvegarder
 admin:
     menu:
         home: Accueil
+        job: Emplois
+        contact: Contacts
+    contact:
+        common:
+            title: Titre de la demande de contact
+            user: Nom & prénom
+            content: Description de la demande de contact
+        index:
+            title: Contacts
+        show:
+            title: Détail d'une demande de contact
+    job:
+        index:
+            title: Emplois
+            table:
+                name: Nom de l'emploi
+        edit:
+            title: Éditer un emploi
+        create:
+            title: Créer un emploi
+
+form:
+    admin:
+        job:
+            name: Nom de l'emploi
+
+flashes:
+    admin:
+        error: Une erreur est survenue, l'action en cours n'a pas été correctement enregistrée
+        job:
+            create:
+                success: L'emploi a été correctement enregistré
+            edit:
+                success: L'emploi a été correctement modifié
+            delete:
+                success: L'emploi a été correctement supprimé

@@ -1,0 +1,4 @@
+AppBundle\Entity\Job:
+    properties:
+        name:
+            - NotBlank: ~

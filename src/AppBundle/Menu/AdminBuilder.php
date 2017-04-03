@@ -25,6 +25,8 @@ class AdminBuilder extends AbstractBuilder
         $routeName = $request->get('_route');
 
         $this->addItem($menu, 'admin.menu.home', 'admin', 'home');
+        $this->addItemAndCurrent('admin_job', $menu, 'admin.menu.job', 'admin_job_index', 'building');
+        $this->addItemAndCurrent('admin_contact', $menu, 'admin.menu.contact', 'admin_contact_index', 'comment');
 
         return $menu;
     }

@@ -1,0 +1,21 @@
+services:
+    app.manager.abstract:
+        class: AppBundle\Manager\AbstractManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@knp_paginator"
+            - "@request_stack"
+
+    app.manager.contact:
+        class: AppBundle\Manager\ContactManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@knp_paginator"
+            - "@request_stack"
+
+    app.manager.job:
+        class: AppBundle\Manager\JobManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@knp_paginator"
+            - "@request_stack"
