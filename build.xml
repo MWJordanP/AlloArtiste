@@ -5,6 +5,27 @@
         <exec command="vendor/bin/phing -l" passthru="true"/>
     </target>
 
+    <target name="update:preprod" description="Update project on preprod">
+        <property name="env" value="preprod" override="true"/>
+
+        <echo message="Fetch git..."/>
+        <exec command="git pull origin master" passthru="true" checkreturn="true"/>
+        <exec command="rm -rf var/cache/*" passthru="true" checkreturn="true"/>
+        <echo message="Create database..."/>
+        <exec command="php bin/console doctrine:database:drop --force" passthru="true"/>
+        <exec command="php bin/console doctrine:database:create" passthru="true"/>
+        <echo message="Composer install..."/>
+        <exec command="SYMFONY_ENV=prod composer install --no-dev --optimize-autoloader" passthru="true" checkreturn="true"/>
+        <echo message="Clear cache..."/>
+        <exec command="rm -rf var/cache/*" passthru="true" checkreturn="true"/>
+        <echo message="Reset database..."/>
+        <exec command="php bin/console doctrine:schema:update --force" passthru="true"/>
+        <echo message="Load fixtures..."/>
+        <exec command="php bin/console doctrine:fixtures:load --append" passthru="true"/>
+        <echo message="Disable index..."/>
+        <exec command="echo 'User-agent: *${line.separator}Disallow: /' > web/robots.txt" passthru="true"/>
+    </target>
+
     <target name="update:dev" description="Update project in dev">
         <echo message="Fetch git..."/>
         <exec command="git pull origin master" passthru="true" checkreturn="true"/>
@@ -21,5 +42,9 @@
         <exec command="php bin/console doctrine:schema:update --force" passthru="true"/>
         <echo message="Load fixtures..."/>
         <exec command="php bin/console doctrine:fixtures:load --append" passthru="true"/>
+    </target>
+
+    <target name="remote:update:preprod" description="Remotely update the preprod">
+        <exec command="ssh website@164.132.46.92 'cd site; vendor/bin/phing update:preprod'" passthru="true" checkreturn="true"/>
     </target>
 </project>
