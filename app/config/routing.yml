@@ -1,5 +1,10 @@
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@AppBundle/Controller"
+    type:     annotation
+    prefix:   /
+
+web_service:
+    resource: "@AppBundle/Controller/WebService"
     type:     annotation
     prefix:   /service-web
 
