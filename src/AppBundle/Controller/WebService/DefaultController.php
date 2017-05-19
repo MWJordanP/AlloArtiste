@@ -39,8 +39,7 @@ class DefaultController extends Controller
         ]);
 
         return new JsonResponse([
-            'user'    => null === $user ? $user : $user->getUsername(),
-            'request' => $request->attributes,
+            'user' => null === $user ? $user : $user->getUsername(),
         ]);
     }
 }
