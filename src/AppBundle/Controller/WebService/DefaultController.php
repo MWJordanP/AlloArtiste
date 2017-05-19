@@ -5,6 +5,7 @@ namespace AppBundle\Controller\WebService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -20,5 +21,25 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return new JsonResponse('success');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
+     * @Route("/user", name="web_service_user_show")
+     */
+    public function userAction(Request $request)
+    {
+        $username = $request->get('username');
+
+        $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
+            'username' => $username,
+        ]);
+
+        return new JsonResponse([
+            'user' => $user,
+        ]);
     }
 }
