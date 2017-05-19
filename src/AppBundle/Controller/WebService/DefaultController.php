@@ -39,7 +39,7 @@ class DefaultController extends Controller
         ]);
 
         return new JsonResponse([
-            'user' => $user,
+            'user' => null === $user ? 'La valeur envoyé est : '.$username : 'GG le nom de l\'utilisateur à été trouvé'.$user->getUsername(),
         ]);
     }
 }
