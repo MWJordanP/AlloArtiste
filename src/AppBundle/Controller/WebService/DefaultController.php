@@ -32,7 +32,7 @@ class DefaultController extends Controller
      */
     public function userAction(Request $request)
     {
-        $username = $request->get('username');
+        $username = $request->request->get('username');
 
         $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
             'username' => $username,
