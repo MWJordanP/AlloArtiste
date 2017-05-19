@@ -39,7 +39,7 @@ class DefaultController extends Controller
         ]);
 
         return new JsonResponse([
-            'user' => null === $user ? $user : $user->getUsername(),
+            'user' => $request->request->get('username').' '.$request->get('username').''.$request->attributes->get('username'),
         ]);
     }
 }
