@@ -32,14 +32,14 @@ class DefaultController extends Controller
      */
     public function userAction(Request $request)
     {
-        $username = $request->request->get('username');
+        $username = $request->get('username');
 
         $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
             'username' => $username,
         ]);
 
         return new JsonResponse([
-            'user' => $request->get('username'),
+            'user' => $user,
         ]);
     }
 }
