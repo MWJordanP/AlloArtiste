@@ -32,14 +32,16 @@ class DefaultController extends Controller
      */
     public function userAction(Request $request)
     {
-        $username = $request->get('username');
+        $json = $request->get('json');
+
+        $decode = json_decode($json, true);
 
         $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
-            'username' => $username,
+            'username' => $decode['username'],
         ]);
 
         return new JsonResponse([
-            'user' => null === $user ? 'La valeur envoyé est : '.$username : 'GG le nom de l\'utilisateur à été trouvé'.$user->getUsername(),
+            'user' => null === $user ? 'La valeur envoyé est : '.$json : 'GG le nom de l\'utilisateur à été trouvé'.$user->getUsername(),
         ]);
     }
 }
