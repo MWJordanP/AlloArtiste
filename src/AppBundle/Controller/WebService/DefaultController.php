@@ -77,16 +77,14 @@ class DefaultController extends Controller
                     'FirstName' => $user->getFirstName(),
                     'FastName'  => $user->getLastName(),
                 ]);
-            } else {
-                return new JsonResponse([
-                    'Username'  => null,
-                    'FirstName' => null,
-                    'FastName'  => null,
-                ]);
             }
         }
 
-        throw new NotFoundHttpException('Username not string');
+        return new JsonResponse([
+            'Username'  => $username,
+            'FirstName' => null,
+            'FastName'  => null,
+        ]);
     }
 
     /**
