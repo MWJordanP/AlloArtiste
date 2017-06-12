@@ -108,8 +108,6 @@ class DefaultController extends Controller
             ];
         }
 
-        return new JsonResponse([
-            'users' => $data,
-        ]);
+        return new JsonResponse([$data]);
     }
 }
