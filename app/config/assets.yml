@@ -1,5 +1,10 @@
 assets:
     js:
+        app:
+            - ../common/jquery.min.js
+            - ../common/bootstrap.min.js
+            - ../common/menu.min.js
+            - app.js
         admin:
             - ../common/jquery.min.js
             - ../common/bootstrap.min.js

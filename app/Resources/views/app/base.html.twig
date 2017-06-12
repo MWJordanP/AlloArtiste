@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome Allo artiste!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+<div id="wrapper">
+    {% block body %}
+    {% endblock %}
+</div>
+<script src="{{ asset('js/app.min.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

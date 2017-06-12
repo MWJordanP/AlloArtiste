@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class DefaultController
@@ -32,16 +33,29 @@ class DefaultController extends Controller
      */
     public function userAction(Request $request)
     {
-        $json = $request->get('json');
+        $username = $request->get('username');
 
-        $decode = json_decode($json, true);
+        if (is_string($username)) {
+            $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
+                'username' => $username,
+            ]);
 
-        $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
-            'username' => $decode['username'],
-        ]);
+            if (null !== $user) {
+                return new JsonResponse([
+                    'user'   => [
+                        'id'       => $user->getId(),
+                        'username' => $user->getUsername(),
+                    ],
+                    'status' => 'success',
+                ]);
+            } else {
+                return new JsonResponse([
+                    'user'   => null,
+                    'status' => 'error',
+                ]);
+            }
+        }
 
-        return new JsonResponse([
-            'user' => null === $user ? 'La valeur envoyé est : '.$json : 'GG le nom de l\'utilisateur à été trouvé'.$user->getUsername(),
-        ]);
+        throw new NotFoundHttpException('Username not string');
     }
 }

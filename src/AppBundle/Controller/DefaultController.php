@@ -13,14 +13,12 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @param Request $request
-     *
      * @return Response
      *
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('app/default/index.html.twig');
     }
 }
