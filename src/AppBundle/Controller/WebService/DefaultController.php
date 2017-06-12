@@ -104,7 +104,7 @@ class DefaultController extends Controller
             $data[] = [
                 'Username'  => $user->getUsername(),
                 'FirstName' => $user->getFirstName(),
-                'FastName'  => $user->getLastName(),
+                'LastName'  => $user->getLastName(),
             ];
         }
 
