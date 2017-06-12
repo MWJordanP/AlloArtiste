@@ -38,7 +38,7 @@ class DefaultController extends Controller
 
         if (is_string($username)) {
             $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
-                'Username' => $username,
+                'username' => $username,
             ]);
 
             if (null !== $user) {
@@ -68,7 +68,7 @@ class DefaultController extends Controller
 
         if (is_string($username)) {
             $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
-                'Username' => $username,
+                'username' => $username,
             ]);
 
             if (null !== $user) {
