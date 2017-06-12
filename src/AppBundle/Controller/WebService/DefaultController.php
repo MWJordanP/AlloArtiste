@@ -75,7 +75,7 @@ class DefaultController extends Controller
                 return new JsonResponse([
                     'Username'  => $user->getUsername(),
                     'FirstName' => $user->getFirstName(),
-                    'FastName'  => $user->getLastName(),
+                    'LastName'  => $user->getLastName(),
                 ]);
             }
         }
@@ -83,7 +83,7 @@ class DefaultController extends Controller
         return new JsonResponse([
             'Username'  => $username,
             'FirstName' => null,
-            'FastName'  => null,
+            'LastName'  => null,
         ]);
     }
 
