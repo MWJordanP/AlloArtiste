@@ -42,16 +42,11 @@ class DefaultController extends Controller
 
             if (null !== $user) {
                 return new JsonResponse([
-                    'user'   => [
-                        'id'       => $user->getId(),
-                        'username' => $user->getUsername(),
-                    ],
-                    'status' => 'success',
+                    'username' => $user->getUsername(),
                 ]);
             } else {
                 return new JsonResponse([
-                    'user'   => null,
-                    'status' => 'error',
+                    'username' => 'Pas trouvé',
                 ]);
             }
         }
