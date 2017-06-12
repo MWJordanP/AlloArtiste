@@ -29,7 +29,7 @@ class DefaultController extends Controller
      *
      * @return JsonResponse
      *
-     * @Route("/user", name="web_service_user_show")
+     * @Route("/user-test", name="web_service_user_show")
      */
     public function userAction(Request $request)
     {
@@ -37,12 +37,44 @@ class DefaultController extends Controller
 
         if (is_string($username)) {
             $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
-                'username' => $username,
+                'Username' => $username,
             ]);
 
             if (null !== $user) {
                 return new JsonResponse([
-                    'username' => $user->getUsername(),
+                    'Username' => $user->getUsername(),
+                ]);
+            } else {
+                return new JsonResponse([
+                    'Username' => 'Pas trouvé',
+                ]);
+            }
+        }
+
+        throw new NotFoundHttpException('Username not string');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
+     * @Route("/completed-user-test", name="web_service_user_completed")
+     */
+    public function completedUserTestAction(Request $request)
+    {
+        $username = $request->get('username');
+
+        if (is_string($username)) {
+            $user = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findOneBy([
+                'Username' => $username,
+            ]);
+
+            if (null !== $user) {
+                return new JsonResponse([
+                    'Username'  => $user->getUsername(),
+                    'FirstName' => $user->getFirstName(),
+                    'FastName'  => $user->getLastName(),
                 ]);
             } else {
                 return new JsonResponse([
@@ -52,5 +84,21 @@ class DefaultController extends Controller
         }
 
         throw new NotFoundHttpException('Username not string');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
+     * @Route("/list-user-test", name="web_service_user_list")
+     */
+    public function listUserTestAction(Request $request)
+    {
+        $users = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findAll();
+
+        return new JsonResponse([
+            'users' => $users,
+        ]);
     }
 }
