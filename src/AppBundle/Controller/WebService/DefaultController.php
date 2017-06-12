@@ -79,7 +79,9 @@ class DefaultController extends Controller
                 ]);
             } else {
                 return new JsonResponse([
-                    'username' => 'Pas trouvé',
+                    'Username'  => null,
+                    'FirstName' => null,
+                    'FastName'  => null,
                 ]);
             }
         }
