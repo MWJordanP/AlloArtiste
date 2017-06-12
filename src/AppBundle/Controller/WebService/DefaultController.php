@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\WebService;
 
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -97,8 +98,18 @@ class DefaultController extends Controller
     {
         $users = $this->getDoctrine()->getManager()->getRepository('AppBundle:User')->findAll();
 
+        $data = [];
+        /** @var User $user */
+        foreach ($users as $user) {
+            $data[] = [
+                'Username'  => $user->getUsername(),
+                'FirstName' => $user->getFirstName(),
+                'FastName'  => $user->getLastName(),
+            ];
+        }
+
         return new JsonResponse([
-            'users' => $users,
+            'users' => $data,
         ]);
     }
 }

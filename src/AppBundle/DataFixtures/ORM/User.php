@@ -43,6 +43,20 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface
             $this->addReference('user'.$key, $user);
         }
 
+        for ($i = 0; $i < 20; $i++) {
+            $user = new User();
+            $user
+                ->setFirstName('First Name '.$i)
+                ->setLastName('Last Name '.$i)
+                ->setUsername('Username '.$i)
+                ->setEmail('email'.$i.'@gmail.com')
+                ->setPassword($password)
+                ->setEnabled(true);
+
+            $manager->persist($user);
+            $this->addReference('userfack'.$i, $user);
+        }
+
         $manager->flush();
     }
 
