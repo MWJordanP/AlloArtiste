@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,21 @@ class Job
      * @ORM\Column(type="string", length=255)
      */
     protected $name;
+
+    /**
+     * @var User[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="User", mappedBy="job")
+     */
+    protected $users;
+
+    /**
+     * Job constructor.
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -64,6 +80,26 @@ class Job
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return User[]|ArrayCollection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param User[]|ArrayCollection $users
+     *
+     * @return Job
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
 
         return $this;
     }

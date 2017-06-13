@@ -9,7 +9,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * Class User
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="users")
  */
 class User extends BaseUser
@@ -71,6 +71,13 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="Tag", mappedBy="users")
      */
     protected $tags;
+
+    /**
+     * @var Job
+     *
+     * @ORM\ManyToOne(targetEntity="Job", inversedBy="users")
+     */
+    protected $job;
 
     /**
      * @var Friend[]|ArrayCollection
@@ -294,6 +301,26 @@ class User extends BaseUser
     public function setInviteFriends($inviteFriends)
     {
         $this->inviteFriends = $inviteFriends;
+
+        return $this;
+    }
+
+    /**
+     * @return Job
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    /**
+     * @param Job $job
+     *
+     * @return User
+     */
+    public function setJob($job)
+    {
+        $this->job = $job;
 
         return $this;
     }
