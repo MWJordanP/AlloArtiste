@@ -19,3 +19,6 @@ monolog:
             level: debug
         console:
             type:  console
+
+swiftmailer:
+    delivery_addresses: ['jordan.prevot7611@gmail.com']
