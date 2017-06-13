@@ -2,18 +2,16 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     allo_artiste
-    database_user:     root
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: allo_artiste
+    database_user: root
     database_password: 1234
-    # You should uncomment this if you want use pdo_sqlite
-    # database_path: "%kernel.root_dir%/data.db3"
-
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       noreply@allo-artiste.com
-    mailer_password:   ~
-
-    # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    mailer_transport: smtp
+    mailer_host: smtp.sendgrid.net
+    mailer_user: heyden761
+    mailer_password: alloArtiste02
+    mailer_port: 587
+    mailer_sender_address: no-reply@allo-artiste.fr
+    mailer_sender_name: allo-artiste.fr
+    secret: ThisTokenIsNotSoSecretChangeIt

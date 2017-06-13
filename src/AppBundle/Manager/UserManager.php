@@ -54,22 +54,40 @@ class UserManager extends AbstractManager
     }
 
     /**
-     * @param string $token
-     * @param string $role
+     * @param string      $token
+     * @param string|null $role
      *
      * @return User
      */
-    public function getToken($token, $role)
+    public function getToken($token, $role = null)
     {
         /** @var User $user */
         $user = $this->userManager->findUserBy(['token' => $token]);
         if ($user !== null) {
-            if ($this->authorizationChecker->isGranted($role, $user)) {
+            if (null !== $role) {
+                if ($this->authorizationChecker->isGranted($role, $user)) {
+                    return $user;
+                }
+            } else {
                 return $user;
             }
         }
 
         return null;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return string
+     */
+    public function password(User $user)
+    {
+        $password = substr(md5(rand()), 0, 7);
+        $user->setPlainPassword($password);
+        $this->userManager->updateUser($user);
+
+        return $password;
     }
 
     /**

@@ -8,6 +8,11 @@ common:
         delete: Supprimer
         save: Sauvegarder
 
+email:
+    change_password:
+        title: Nouveau mot de passe
+        content: Le nouveau mot de passe est
+
 app:
     home:
         auth:
@@ -18,6 +23,10 @@ app:
                 - password => xxx
         user:
             title: (USER) Liste des utilisateurs
+            change_password:
+                title: Changement de mot de passe
+                argument: >
+                    - username => pjordan
         city:
             title: (CITY) Liste des urls
             all: Liste compléte des villes
