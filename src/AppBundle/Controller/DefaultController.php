@@ -19,6 +19,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('app/default/index.html.twig');
+        $userManager = $this->get('app.manager.user');
+        $users       = $userManager->userManager->findUsers();
+
+        return $this->render('app/default/index.html.twig', [
+            'users' => $users,
+        ]);
     }
 }

@@ -52,6 +52,12 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface
                 ->setEmail('email'.$i.'@gmail.com')
                 ->setPassword($password)
                 ->setEnabled(true);
+            $bool = random_int(0, 1);
+            if ($bool) {
+                $user->addRole('ROLE_ARTIST');
+            } else {
+                $user->addRole('ROLE_CUSTOMER');
+            }
 
             $manager->persist($user);
             $this->addReference('userfack'.$i, $user);

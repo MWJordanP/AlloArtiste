@@ -33,3 +33,12 @@ services:
             - "@doctrine.orm.entity_manager"
             - "@knp_paginator"
             - "@request_stack"
+
+    app.manager.user:
+        class: AppBundle\Manager\UserManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@knp_paginator"
+            - "@request_stack"
+            - "@fos_user.user_manager.default"
+            - "@security.authorization_checker"

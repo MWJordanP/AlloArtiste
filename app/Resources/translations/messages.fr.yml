@@ -13,6 +13,11 @@ app:
         auth:
             title: (AUTHENTIFICATION) Url
             login: Login
+            argument: >
+                - username => pjordan</br>
+                - password => xxx
+        user:
+            title: (USER) Liste des utilisateurs
         city:
             title: (CITY) Liste des urls
             all: Liste compléte des villes

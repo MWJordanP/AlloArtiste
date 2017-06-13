@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\Timestampable;
 
@@ -30,6 +31,21 @@ class Tag
      * @ORM\Column(type="string", length=255)
      */
     protected $name;
+
+    /**
+     * @var User[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="tags")
+     */
+    protected $users;
+
+    /**
+     * Tag constructor.
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -67,6 +83,26 @@ class Tag
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return User[]|ArrayCollection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param User[]|ArrayCollection $users
+     *
+     * @return Tag
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
 
         return $this;
     }

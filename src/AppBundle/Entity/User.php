@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -65,12 +66,36 @@ class User extends BaseUser
     protected $token;
 
     /**
+     * @var Tag[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="users")
+     */
+    protected $tags;
+
+    /**
+     * @var Friend[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Friend", mappedBy="actor")
+     */
+    protected $friends;
+
+    /**
+     * @var Friend[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Friend", mappedBy="friend")
+     */
+    protected $inviteFriends;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->token = rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
+        $this->tags          = new ArrayCollection();
+        $this->friends       = new ArrayCollection();
+        $this->inviteFriends = new ArrayCollection();
+        $this->token         = rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
     }
 
     /**
@@ -149,6 +174,126 @@ class User extends BaseUser
     public function setToken($token)
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * @param string $street
+     *
+     * @return User
+     */
+    public function setStreet($street)
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreetNumber()
+    {
+        return $this->streetNumber;
+    }
+
+    /**
+     * @param string $streetNumber
+     *
+     * @return User
+     */
+    public function setStreetNumber($streetNumber)
+    {
+        $this->streetNumber = $streetNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Tag[]|ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Tag[]|ArrayCollection $tags
+     *
+     * @return User
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @return Friend[]|ArrayCollection
+     */
+    public function getFriends()
+    {
+        return $this->friends;
+    }
+
+    /**
+     * @param Friend[]|ArrayCollection $friends
+     *
+     * @return User
+     */
+    public function setFriends($friends)
+    {
+        $this->friends = $friends;
+
+        return $this;
+    }
+
+    /**
+     * @return Friend[]|ArrayCollection
+     */
+    public function getInviteFriends()
+    {
+        return $this->inviteFriends;
+    }
+
+    /**
+     * @param Friend[]|ArrayCollection $inviteFriends
+     *
+     * @return User
+     */
+    public function setInviteFriends($inviteFriends)
+    {
+        $this->inviteFriends = $inviteFriends;
 
         return $this;
     }

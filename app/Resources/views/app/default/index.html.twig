@@ -2,7 +2,32 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        {{ 'app.home.user.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {% for user in users %}
+                            <li>
+                                login : {{ user.username }} -
+                                role :
+                                {% for role in user.roles %}
+                                    {{ role }}
+                                    {% if loop.last == false %}
+                                        ,
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">
@@ -10,17 +35,19 @@
                     </h4>
                 </div>
                 <div class="panel-body">
-                    <p>
+                    <p class="well">
                         <a href="{{ path('web_service_auth_login') }}" target="_blank">
                             {{ 'app.home.auth.login'|trans }}
                         </a> :
-                        {{ absolute_url(path('web_service_auth_login')) }}
+                        {{ absolute_url(path('web_service_auth_login')) }}<br>
+                        {{ 'app.home.auth.argument'|trans|raw }}
                     </p>
-                    <p></p>
+                    <p class="well"></p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="clearfix"></div>
+        <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">
@@ -28,17 +55,17 @@
                     </h4>
                 </div>
                 <div class="panel-body">
-                    <p>
+                    <p class="well">
                         <a href="{{ path('web_service_city_all') }}" target="_blank">
                             {{ 'app.home.city.all'|trans }}
                         </a> :
                         {{ absolute_url(path('web_service_city_all')) }}
                     </p>
-                    <p></p>
+                    <p class="well"></p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">
@@ -46,17 +73,18 @@
                     </h4>
                 </div>
                 <div class="panel-body">
-                    <p>
+                    <p class="well">
                         <a href="{{ path('web_service_job_all') }}" target="_blank">
                             {{ 'app.home.job.all'|trans }}
                         </a> :
                         {{ absolute_url(path('web_service_job_all')) }}
                     </p>
-                    <p></p>
+                    <p class="well"></p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="clearfix"></div>
+        <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">
@@ -64,13 +92,13 @@
                     </h4>
                 </div>
                 <div class="panel-body">
-                    <p>
+                    <p class="well">
                         <a href="{{ path('web_service_tag_all') }}" target="_blank">
                             {{ 'app.home.tag.all'|trans }}
                         </a> :
                         {{ absolute_url(path('web_service_tag_all')) }}
                     </p>
-                    <p></p>
+                    <p class="well"></p>
                 </div>
             </div>
         </div>
