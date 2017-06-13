@@ -2,14 +2,15 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\Timestampable;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="city")
+ * @ORM\Table(name="departments")
  */
-class City
+class Department
 {
     use Timestampable;
 
@@ -35,27 +36,24 @@ class City
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=5)
      */
-    protected $zipCode;
+    protected $simpleNum;
 
     /**
-     * @var float
-     * @ORM\Column(type="float")
+     * @var City[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\City", mappedBy="department")
      */
-    protected $latitude;
+    protected $cities;
 
     /**
-     * @var float
-     * @ORM\Column(type="float")
+     * Department constructor.
      */
-    protected $longitude;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Department", inversedBy="cities")
-     * @ORM\JoinColumn(onDelete="SET NULL")
-     */
-    protected $department;
+    public function __construct()
+    {
+        $this->cities = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -76,7 +74,7 @@ class City
     /**
      * @param string $name
      *
-     * @return $this
+     * @return Department
      */
     public function setName($name)
     {
@@ -96,7 +94,7 @@ class City
     /**
      * @param string $simpleName
      *
-     * @return City
+     * @return Department
      */
     public function setSimpleName($simpleName)
     {
@@ -108,80 +106,74 @@ class City
     /**
      * @return string
      */
-    public function getZipCode()
+    public function getSimpleNum()
     {
-        return $this->zipCode;
+        return $this->simpleNum;
     }
 
     /**
-     * @param string $zipCode
+     * @param string $simpleNum
+     *
+     * @return Department
+     */
+    public function setSimpleNum($simpleNum)
+    {
+        $this->simpleNum = $simpleNum;
+
+        return $this;
+    }
+
+    /**
+     * @return City[]|ArrayCollection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * @param City[]|ArrayCollection $cities
      *
      * @return $this
      */
-    public function setZipCode($zipCode)
+    public function setCities($cities)
     {
-        $this->zipCode = $zipCode;
+        $this->cities = $cities;
 
         return $this;
     }
 
     /**
-     * @return float
+     * @param City $cities
+     *
+     * @return boolean
      */
-    public function getLatitude()
+    public function hasCities($cities)
     {
-        return $this->latitude;
+        return $this->getCities()->contains($cities);
     }
 
     /**
-     * @param float $latitude
+     * @param City $city
      *
      * @return $this
      */
-    public function setLatitude($latitude)
+    public function addCity(City $city)
     {
-        $this->latitude = $latitude;
+        if (!$this->getCities()->contains($city)) {
+            $this->getCities()->add($city);
+        }
 
         return $this;
     }
 
     /**
-     * @return float
-     */
-    public function getLongitude()
-    {
-        return $this->longitude;
-    }
-
-    /**
-     * @param float $longitude
+     * Remove city
      *
-     * @return $this
+     * @param City $city
      */
-    public function setLongitude($longitude)
+    public function removeCity(City $city)
     {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDepartment()
-    {
-        return $this->department;
-    }
-
-    /**
-     * @param mixed $department
-     *
-     * @return City
-     */
-    public function setDepartment($department)
-    {
-        $this->department = $department;
-
-        return $this;
+        $this->cities->removeElement($city);
     }
 }

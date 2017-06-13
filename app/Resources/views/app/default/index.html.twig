@@ -1,1 +1,38 @@
 {% extends 'app/base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        {{ 'app.home.city.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <a href="{{ path('web_service_city_all') }}" target="_blank">
+                            {{ 'app.home.city.all'|trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        {{ 'app.home.job.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <a href="{{ path('web_service_job_all') }}" target="_blank">
+                            {{ 'app.home.job.all'|trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

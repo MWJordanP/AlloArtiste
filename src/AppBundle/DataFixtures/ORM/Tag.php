@@ -2,15 +2,15 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use AppBundle\Entity\Job;
+use AppBundle\Entity\Tag;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
- * Class JobFixtures
+ * Class TagFixtures
  */
-class JobFixtures extends AbstractFixture implements OrderedFixtureInterface
+class TagFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * @param ObjectManager $manager
@@ -18,10 +18,10 @@ class JobFixtures extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         for ($i = 0; $i < 20; $i++) {
-            $job = new Job();
-            $job->setName('Job '.$i);
+            $tag = new Tag();
+            $tag->setName('Tag '.$i);
 
-            $manager->persist($job);
+            $manager->persist($tag);
         }
 
         $manager->flush();

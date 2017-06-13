@@ -2,7 +2,7 @@
 
 namespace AppBundle\Manager;
 
-use AppBundle\Entity\Job;
+use AppBundle\Entity\City;
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -10,9 +10,9 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class JobManager
+ * Class CityManager
  */
-class JobManager extends AbstractManager
+class CityManager extends AbstractManager
 {
 
     protected $repository;
@@ -27,11 +27,11 @@ class JobManager extends AbstractManager
     public function __construct(EntityManager $entityManager, Paginator $paginator, RequestStack $requestStack)
     {
         parent::__construct($entityManager, $paginator, $requestStack);
-        $this->repository = $entityManager->getRepository('AppBundle:Job');
+        $this->repository = $entityManager->getRepository('AppBundle:City');
     }
 
     /**
-     * @return Job[]|array
+     * @return City[]|array
      */
     public function getList()
     {
@@ -49,16 +49,16 @@ class JobManager extends AbstractManager
     /**
      * @param integer $id
      *
-     * @return Job
+     * @return City
      */
     public function getById($id)
     {
-        $job = $this->repository->find($id);
-        if (null === $job) {
-            throw new NotFoundHttpException('Job not found');
+        $city = $this->repository->find($id);
+        if (null === $city) {
+            throw new NotFoundHttpException('City not found');
         }
 
-        return $job;
+        return $city;
     }
 
     /**
@@ -70,19 +70,27 @@ class JobManager extends AbstractManager
     {
         if (is_array($data)) {
             $array = [];
-            /** @var Job $job */
-            foreach ($data as $job) {
+            /** @var City $city */
+            foreach ($data as $city) {
                 $array[] = [
-                    'Id'   => $job->getId(),
-                    'Name' => $job->getName(),
+                    'Id'         => $city->getId(),
+                    'Name'       => $city->getName(),
+                    'SimpleName' => $city->getSimpleName(),
+                    'ZipCode'    => $city->getZipCode(),
+                    'Latitude'   => $city->getLatitude(),
+                    'Longitude'  => $city->getLatitude(),
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'   => $data->getId(),
-                'Name' => $data->getName(),
+                'Id'         => $data->getId(),
+                'Name'       => $data->getName(),
+                'SimpleName' => $data->getSimpleName(),
+                'ZipCode'    => $data->getZipCode(),
+                'Latitude'   => $data->getLatitude(),
+                'Longitude'  => $data->getLatitude(),
             ];
         }
     }

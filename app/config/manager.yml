@@ -19,3 +19,10 @@ services:
             - "@doctrine.orm.entity_manager"
             - "@knp_paginator"
             - "@request_stack"
+
+    app.manager.city:
+        class: AppBundle\Manager\CityManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@knp_paginator"
+            - "@request_stack"
