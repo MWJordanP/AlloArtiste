@@ -13,8 +13,10 @@
                     <p>
                         <a href="{{ path('web_service_city_all') }}" target="_blank">
                             {{ 'app.home.city.all'|trans }}
-                        </a>
+                        </a> :
+                        {{ absolute_url(path('web_service_city_all')) }}
                     </p>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -29,8 +31,10 @@
                     <p>
                         <a href="{{ path('web_service_job_all') }}" target="_blank">
                             {{ 'app.home.job.all'|trans }}
-                        </a>
+                        </a> :
+                        {{ absolute_url(path('web_service_job_all')) }}
                     </p>
+                    <p></p>
                 </div>
             </div>
         </div>
