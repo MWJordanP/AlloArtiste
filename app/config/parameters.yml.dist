@@ -7,11 +7,10 @@ parameters:
     database_name: allo_artiste
     database_user: root
     database_password: 1234
-    mailer_transport: smtp
-    mailer_host: smtp.sendgrid.net
-    mailer_user: heyden761
-    mailer_password: alloArtiste02
-    mailer_port: 587
+    mailer_transport: gmail
+    mailer_user:     your_gmail_username
+    mailer_password: your_gmail_password
+    mailer_port: ~
     mailer_sender_address: no-reply@allo-artiste.fr
     mailer_sender_name: allo-artiste.fr
     secret: ThisTokenIsNotSoSecretChangeIt
