@@ -6,6 +6,24 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">
+                        {{ 'app.home.auth.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <a href="{{ path('web_service_auth_login') }}" target="_blank">
+                            {{ 'app.home.auth.login'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_auth_login')) }}
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
                         {{ 'app.home.city.title'|trans }}
                     </h4>
                 </div>
@@ -33,6 +51,24 @@
                             {{ 'app.home.job.all'|trans }}
                         </a> :
                         {{ absolute_url(path('web_service_job_all')) }}
+                    </p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        {{ 'app.home.tag.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <a href="{{ path('web_service_tag_all') }}" target="_blank">
+                            {{ 'app.home.tag.all'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_tag_all')) }}
                     </p>
                     <p></p>
                 </div>

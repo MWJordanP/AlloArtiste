@@ -8,22 +8,22 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Class CityController
+ * Class JobController
  *
- * @Route("/city")
+ * @Route("/tag")
  */
-class CityController extends Controller
+class TagController extends Controller
 {
     /**
      * @return Response
      *
-     * @Route("/all", name="web_service_city_all")
+     * @Route("/all", name="web_service_tag_all")
      */
     public function allAction()
     {
-        $cityManager = $this->get('app.manager.city');
-        $cities      = $cityManager->getList();
+        $tagManager = $this->get('app.manager.tag');
+        $tags       = $tagManager->getList();
 
-        return new JsonResponse($cityManager->convertArray($cities));
+        return new JsonResponse($tagManager->convertArray($tags));
     }
 }

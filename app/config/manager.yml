@@ -26,3 +26,10 @@ services:
             - "@doctrine.orm.entity_manager"
             - "@knp_paginator"
             - "@request_stack"
+
+    app.manager.tag:
+        class: AppBundle\Manager\TagManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@knp_paginator"
+            - "@request_stack"
