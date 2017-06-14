@@ -45,20 +45,25 @@ class UserController extends Controller
         if (!empty($token) && is_string($token) && !empty($image) && is_string($image)) {
             $userManager = $this->get('app.manager.user');
             $user        = $userManager->getToken($token);
-            $user->setPicture($image);
-            $userManager->save($user);
+            if (null !== $user) {
+                $user->setPicture($image);
+                $userManager->save($user);
+
+                return new JsonResponse([
+                    'status' => true,
+                    $userManager->convertArray($user),
+                ]);
+            }
 
             return new JsonResponse([
-                'status' => true,
-                $userManager->convertArray($user),
+                'error'  => 'User not found',
+                'status' => false,
             ]);
         }
 
         return new JsonResponse([
             'error'  => 'Token or image is empty',
             'status' => false,
-            'token'  => $token,
-            'image'  => $image,
         ]);
     }
 
