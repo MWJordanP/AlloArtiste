@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
