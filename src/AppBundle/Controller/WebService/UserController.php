@@ -57,6 +57,8 @@ class UserController extends Controller
         return new JsonResponse([
             'error'  => 'Token or image is empty',
             'status' => false,
+            'token'  => $token,
+            'image'  => $image,
         ]);
     }
 
