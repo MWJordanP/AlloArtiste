@@ -54,6 +54,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $picture;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $streetNumber;
@@ -321,6 +328,26 @@ class User extends BaseUser
     public function setJob($job)
     {
         $this->job = $job;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param string $picture
+     *
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
 
         return $this;
     }

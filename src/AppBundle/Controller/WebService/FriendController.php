@@ -48,24 +48,31 @@ class FriendController extends Controller
      */
     public function addAction(Request $request)
     {
-        $token       = $request->get('token');
-        $id          = $request->get('id');
-        $userManager = $this->get('app.manager.user');
-        $user        = $userManager->getToken($token, 'ROLE_ARTIST');
-        $userAdd     = $userManager->getById($id);
-        if (null !== $user && null !== $userAdd) {
-            $friendManager = $this->get('app.manager.friend');
-            $friendManager->create($user, $userAdd);
-            $friends = $friendManager->getByUser($user);
+        $token = $request->get('token');
+        $id    = $request->get('id');
+        if (!empty($token) && !empty($id)) {
+            $userManager = $this->get('app.manager.user');
+            $user        = $userManager->getToken($token, 'ROLE_ARTIST');
+            $userAdd     = $userManager->getById($id);
+            if (null !== $user && null !== $userAdd) {
+                $friendManager = $this->get('app.manager.friend');
+                $friendManager->create($user, $userAdd);
+                $friends = $friendManager->getByUser($user);
+
+                return new JsonResponse([
+                    'contacts' => $friendManager->convertArray($friends),
+                    'status'   => true,
+                ]);
+            }
 
             return new JsonResponse([
-                'contacts' => $friendManager->convertArray($friends),
-                'status'   => true,
+                'error'  => 'User or contact not found',
+                'status' => false,
             ]);
         }
 
         return new JsonResponse([
-            'error'  => 'User or contact not found',
+            'error'  => 'Id or token is empty',
             'status' => false,
         ]);
     }
