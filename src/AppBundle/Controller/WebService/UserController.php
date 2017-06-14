@@ -27,9 +27,8 @@ class UserController extends Controller
         $token       = $request->get('token');
         $userManager = $this->get('app.manager.user');
         $user        = $userManager->getToken($token, 'ROLE_ARTIST');
-        exit;
 
-        return new JsonResponse($cityManager->convertArray($cities));
+        return new JsonResponse();
     }
 
     /**

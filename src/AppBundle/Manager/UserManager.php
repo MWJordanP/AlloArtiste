@@ -65,7 +65,7 @@ class UserManager extends AbstractManager
         $user = $this->userManager->findUserBy(['token' => $token]);
         if ($user !== null) {
             if (null !== $role) {
-                if ($this->authorizationChecker->isGranted($role, $user)) {
+                if ($user->hasRole($role)) {
                     return $user;
                 }
             } else {
@@ -74,6 +74,18 @@ class UserManager extends AbstractManager
         }
 
         return null;
+    }
+
+    /**
+     * @param integer $id
+     *
+     * @return User
+     */
+    public function getById($id)
+    {
+        $user = $this->repository->find($id);
+
+        return $user;
     }
 
     /**

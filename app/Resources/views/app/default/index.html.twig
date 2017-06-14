@@ -13,6 +13,7 @@
                     <ul class="well">
                         {% for user in users %}
                             <li>
+                                id: {{ user.id }} -
                                 login : {{ user.username }} -
                                 role :
                                 {% for role in user.roles %}
@@ -20,7 +21,8 @@
                                     {% if loop.last == false %}
                                         ,
                                     {% endif %}
-                                {% endfor %}
+                                {% endfor %} -
+                                token : {{ user.token }}
                             </li>
                         {% endfor %}
                     </ul>
@@ -105,6 +107,31 @@
                         {{ absolute_url(path('web_service_tag_all')) }}
                     </p>
                     <p class="well"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        {{ 'app.home.contact.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p class="well">
+                        <a href="{{ path('web_service_friend_contact') }}" target="_blank">
+                            {{ 'app.home.contact.list.title'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_friend_contact')) }}<br>
+                        {{ 'app.home.contact.list.argument'|trans|raw }}
+                    </p>
+                    <p class="well">
+                        <a href="{{ path('web_service_friend_add') }}" target="_blank">
+                            {{ 'app.home.contact.add.title'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_friend_add')) }}<br>
+                        {{ 'app.home.contact.add.argument'|trans|raw }}
+                    </p>
                 </div>
             </div>
         </div>
