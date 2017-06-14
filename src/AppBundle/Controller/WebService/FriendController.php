@@ -52,7 +52,7 @@ class FriendController extends Controller
         $id    = $request->get('id');
         if (!empty($token) && !empty($id)) {
             $userManager = $this->get('app.manager.user');
-            $user        = $userManager->getToken($token, 'ROLE_ARTIST');
+            $user        = $userManager->getToken($token);
             $userAdd     = $userManager->getById($id);
             if (null !== $user && null !== $userAdd) {
                 $friendManager = $this->get('app.manager.friend');
