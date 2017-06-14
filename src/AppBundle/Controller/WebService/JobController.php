@@ -20,11 +20,10 @@ class JobController extends Controller
      *
      * @Route("/all", name="web_service_job_all")
      */
-    public function allAction(Request $request)
+    public function allAction()
     {
         $jobManager = $this->get('app.manager.job');
         $jobs       = $jobManager->getList();
-        dump($request);exit;
 
         return new JsonResponse($jobManager->convertArray($jobs));
     }
