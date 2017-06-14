@@ -30,12 +30,17 @@ class FriendController extends Controller
             $friendManager = $this->get('app.manager.friend');
             $friends       = $friendManager->getByUser($user);
 
-            return new JsonResponse($friendManager->convertArray($friends));
+            return new JsonResponse([
+                'response' => $friendManager->convertArray($friends),
+                'error'    => 'User not found',
+                'status'   => false,
+            ]);
         }
 
         return new JsonResponse([
-            'error'  => 'User not found',
-            'status' => false,
+            'response' => [],
+            'error'    => 'User not found',
+            'status'   => false,
         ]);
     }
 
@@ -56,24 +61,35 @@ class FriendController extends Controller
             $userAdd     = $userManager->getById($id);
             if (null !== $user && null !== $userAdd) {
                 $friendManager = $this->get('app.manager.friend');
-                $friendManager->create($user, $userAdd);
-                $friends = $friendManager->getByUser($user);
+                if (null === $friendManager->getByUserAndUserAdd($user, $userAdd)) {
+                    $friendManager->create($user, $userAdd);
+                    $friends = $friendManager->getByUser($user);
+
+                    return new JsonResponse([
+                        'response' => $friendManager->convertArray($friends),
+                        'status'   => true,
+                        'error'    => null,
+                    ]);
+                }
 
                 return new JsonResponse([
-                    'contacts' => $friendManager->convertArray($friends),
+                    'response' => [],
+                    'error'    => 'Contact exist',
                     'status'   => true,
                 ]);
             }
 
             return new JsonResponse([
-                'error'  => 'User or contact not found',
-                'status' => false,
+                'response' => [],
+                'error'    => 'User or contact not found',
+                'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'error'  => 'Id or token is empty',
-            'status' => false,
+            'response' => [],
+            'error'    => 'Id or token is empty',
+            'status'   => false,
         ]);
     }
 }

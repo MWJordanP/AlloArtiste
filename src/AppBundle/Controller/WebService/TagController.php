@@ -24,6 +24,10 @@ class TagController extends Controller
         $tagManager = $this->get('app.manager.tag');
         $tags       = $tagManager->getList();
 
-        return new JsonResponse($tagManager->convertArray($tags));
+        return new JsonResponse([
+            'response' => $tagManager->convertArray($tags),
+            'error'    => null,
+            'status'   => true,
+        ]);
     }
 }

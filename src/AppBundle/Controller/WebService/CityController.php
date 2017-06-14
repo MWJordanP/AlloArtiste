@@ -24,6 +24,10 @@ class CityController extends Controller
         $cityManager = $this->get('app.manager.city');
         $cities      = $cityManager->getList();
 
-        return new JsonResponse($cityManager->convertArray($cities));
+        return new JsonResponse([
+            'response' => $cityManager->convertArray($cities),
+            'error'    => null,
+            'status'   => true,
+        ]);
     }
 }

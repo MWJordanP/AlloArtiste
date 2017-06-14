@@ -25,26 +25,29 @@ class AuthController extends Controller
     {
         $username        = $request->get('username');
         $passwordRequest = $request->get('password');
-        $userManager     = $this->get('fos_user.user_manager');
-        $user            = $userManager->findUserByUsernameOrEmail($username);
+        $userManager     = $this->get('app.manager.user');
+        $user            = $userManager->userManager->findUserByUsernameOrEmail($username);
         if (null !== $user) {
             $password = $this->get('security.password_encoder')->isPasswordValid($user, $passwordRequest);
             if ($password) {
                 return new JsonResponse([
-                    'lastUsername' => $username,
-                    'error'        => null,
+                    'response' => $userManager->convertArray($user),
+                    'status'   => true,
+                    'error'    => null,
                 ]);
             } else {
                 return new JsonResponse([
-                    'lastUsername' => $username,
-                    'error'        => 'Password not valid',
+                    'error'    => 'Password not valid',
+                    'response' => [],
+                    'status'   => false,
                 ]);
             }
         }
 
         return new JsonResponse([
-            'lastUsername' => $username,
-            'error'        => 'User not exist',
+            'response' => [],
+            'status'   => false,
+            'error'    => 'User not exist',
         ]);
     }
 }

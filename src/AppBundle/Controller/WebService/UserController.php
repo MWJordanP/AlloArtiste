@@ -50,20 +50,23 @@ class UserController extends Controller
                 $userManager->save($user);
 
                 return new JsonResponse([
-                    'status' => true,
-                    $userManager->convertArray($user),
+                    'response' => $userManager->convertArray($user),
+                    'status'   => true,
+                    'error'    => null,
                 ]);
             }
 
             return new JsonResponse([
-                'error'  => 'User not found',
-                'status' => false,
+                'response' => [],
+                'error'    => 'User not found',
+                'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'error'  => 'Token or image is empty',
-            'status' => false,
+            'response' => [],
+            'error'    => 'Token or image is empty',
+            'status'   => false,
         ]);
     }
 
@@ -98,12 +101,16 @@ class UserController extends Controller
             $mailer->send($message);
 
             return new JsonResponse([
-                'status' => true,
+                'response' => [],
+                'error'    => null,
+                'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'status' => false,
+            'response' => [],
+            'error'    => 'User not exist',
+            'status'   => false,
         ]);
     }
 

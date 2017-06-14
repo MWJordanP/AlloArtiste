@@ -48,6 +48,19 @@ class FriendManager extends AbstractManager
 
     /**
      * @param User $user
+     * @param User $userAdd
+     *
+     * @return Friend
+     */
+    public function getByUserAndUserAdd(User $user, User $userAdd)
+    {
+        $friend = $this->repository->findOneBy(['actor' => $user, 'friend' => $userAdd]);
+
+        return $friend;
+    }
+
+    /**
+     * @param User $user
      *
      * @return Friend[]
      */

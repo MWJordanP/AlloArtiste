@@ -25,6 +25,10 @@ class JobController extends Controller
         $jobManager = $this->get('app.manager.job');
         $jobs       = $jobManager->getList();
 
-        return new JsonResponse($jobManager->convertArray($jobs));
+        return new JsonResponse([
+            'response' => $jobManager->convertArray($jobs),
+            'error'    => null,
+            'status'   => true,
+        ]);
     }
 }
