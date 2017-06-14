@@ -27,6 +27,11 @@ app:
                 title: Changement de mot de passe
                 argument: >
                     - username => pjordan
+            add_image:
+                title: Ajout d'une image
+                argument: >
+                    - token<br>
+                    - image (string)
         contact:
             title: (CONTACT)
             list:

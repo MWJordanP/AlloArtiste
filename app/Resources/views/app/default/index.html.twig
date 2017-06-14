@@ -32,6 +32,12 @@
                         </a> : {{ absolute_url(path('web_service_user_change_password')) }}<br>
                         {{ 'app.home.user.change_password.argument'|trans|raw }}
                     </p>
+                    <p class="well">
+                        <a href="{{ path('web_service_user_add_image') }}" target="_blank">
+                            {{ 'app.home.user.add_image.title'|trans }}
+                        </a> : {{ absolute_url(path('web_service_user_add_image')) }}<br>
+                        {{ 'app.home.user.add_image.argument'|trans|raw }}
+                    </p>
                 </div>
             </div>
         </div>

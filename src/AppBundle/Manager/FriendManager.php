@@ -93,6 +93,7 @@ class FriendManager extends AbstractManager
                     'FirsName' => $friend->getFriend()->getFirstName(),
                     'Phone'    => $friend->getFriend()->getPhone(),
                     'Email'    => $friend->getFriend()->getEmail(),
+                    'Picture'  => $friend->getFriend()->getPicture(),
                 ];
             }
 

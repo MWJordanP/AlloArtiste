@@ -111,19 +111,33 @@ class UserManager extends AbstractManager
     {
         if (is_array($data)) {
             $array = [];
-            /** @var Job $job */
-            foreach ($data as $job) {
+            /** @var User $user */
+            foreach ($data as $user) {
                 $array[] = [
-                    'Id'   => $job->getId(),
-                    'Name' => $job->getName(),
+                    'Id'           => $user->getId(),
+                    'LastName'     => $user->getLastName(),
+                    'FirsName'     => $user->getFirstName(),
+                    'Phone'        => $user->getPhone(),
+                    'Email'        => $user->getEmail(),
+                    'Picture'      => $user->getPicture(),
+                    'Token'        => $user->getToken(),
+                    'Street'       => $user->getStreet(),
+                    'StreetNumber' => $user->getStreetNumber(),
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'   => $data->getId(),
-                'Name' => $data->getName(),
+                'Id'           => $data->getId(),
+                'LastName'     => $data->getLastName(),
+                'FirsName'     => $data->getFirstName(),
+                'Phone'        => $data->getPhone(),
+                'Email'        => $data->getEmail(),
+                'Picture'      => $data->getPicture(),
+                'Token'        => $data->getToken(),
+                'Street'       => $data->getStreet(),
+                'StreetNumber' => $data->getStreetNumber(),
             ];
         }
     }

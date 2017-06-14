@@ -36,6 +36,35 @@ class UserController extends Controller
      *
      * @return JsonResponse
      *
+     * @Route("/add/image", name="web_service_user_add_image")
+     */
+    public function addImageAction(Request $request)
+    {
+        $token = $request->get('token');
+        $image = $request->get('image');
+        if (!empty($token) && is_string($token) && !empty($image) && is_string($image)) {
+            $userManager = $this->get('app.manager.user');
+            $user        = $userManager->getToken($token);
+            $user->setPicture($image);
+            $userManager->save($user);
+
+            return new JsonResponse([
+                'status' => true,
+                $userManager->convertArray($user),
+            ]);
+        }
+
+        return new JsonResponse([
+            'error'  => 'Token or image is empty',
+            'status' => false,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
      * @Route("/change-password", name="web_service_user_change_password")
      */
     public function changePasswordAction(Request $request)
