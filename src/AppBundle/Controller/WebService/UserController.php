@@ -40,8 +40,8 @@ class UserController extends Controller
      */
     public function addImageAction(Request $request)
     {
-        $token = $request->get('token');
-        $image = $request->get('image');
+        $token = $request->request->get('token');
+        $image = $request->request->get('image');
         if (!empty($token) && is_string($token) && !empty($image) && is_string($image)) {
             $userManager = $this->get('app.manager.user');
             $user        = $userManager->getToken($token);
