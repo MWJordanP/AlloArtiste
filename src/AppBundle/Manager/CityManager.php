@@ -35,7 +35,7 @@ class CityManager extends AbstractManager
      */
     public function getList()
     {
-        return $this->repository->findBy([], ['id' => 'ASC'], 200);
+        return $this->repository->findBy([], ['id' => 'ASC'], 99);
     }
 
     /**

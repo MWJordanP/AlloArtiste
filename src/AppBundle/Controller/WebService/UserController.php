@@ -37,14 +37,14 @@ class UserController extends Controller
             }
 
             return new JsonResponse([
-                'response' => [],
+                'response' => null,
                 'error'    => $this->get('translator')->trans('error.user.not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'error'    => $this->get('translator')->trans('error.user.id_empty'),
             'status'   => false,
         ]);
@@ -76,14 +76,14 @@ class UserController extends Controller
             }
 
             return new JsonResponse([
-                'response' => [],
+                'response' => null,
                 'error'    => $this->get('translator')->trans('error.user.not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'error'    => $this->get('translator')->trans('error.user.token_image_empty'),
             'status'   => false,
         ]);
@@ -120,14 +120,14 @@ class UserController extends Controller
             $mailer->send($message);
 
             return new JsonResponse([
-                'response' => [],
+                'response' => null,
                 'error'    => null,
                 'status'   => true,
             ]);
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'error'    => $this->get('translator')->trans('error.user.not_found'),
             'status'   => false,
         ]);

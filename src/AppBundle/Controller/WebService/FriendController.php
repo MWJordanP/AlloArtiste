@@ -39,14 +39,14 @@ class FriendController extends Controller
             }
 
             return new JsonResponse([
-                'response' => [],
+                'response' => null,
                 'error'    => $this->get('translator')->trans('error.user.not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'error'    => $this->get('translator')->trans('error.user.token_empty'),
             'status'   => false,
         ]);
@@ -81,21 +81,21 @@ class FriendController extends Controller
                 }
 
                 return new JsonResponse([
-                    'response' => [],
+                    'response' => null,
                     'error'    => $this->get('translator')->trans('error.friend.exist'),
                     'status'   => true,
                 ]);
             }
 
             return new JsonResponse([
-                'response' => [],
+                'response' => null,
                 'error'    => $this->get('translator')->trans('error.friend.user_or_contact_not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'error'    => $this->get('translator')->trans('error.user.id_token_empty'),
             'status'   => false,
         ]);

@@ -38,14 +38,14 @@ class AuthController extends Controller
             } else {
                 return new JsonResponse([
                     'error'    => $this->get('translator')->trans('error.auth.password_not_valid'),
-                    'response' => [],
+                    'response' => null,
                     'status'   => false,
                 ]);
             }
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'status'   => false,
             'error'    => $this->get('translator')->trans('error.user.not_found'),
         ]);
