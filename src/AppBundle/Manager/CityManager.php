@@ -73,24 +73,24 @@ class CityManager extends AbstractManager
             /** @var City $city */
             foreach ($data as $city) {
                 $array[] = [
-                    'Id'         => $city->getId(),
-                    'Name'       => $city->getName(),
-                    'SimpleName' => $city->getSimpleName(),
-                    'ZipCode'    => $city->getZipCode(),
-                    'Latitude'   => $city->getLatitude(),
-                    'Longitude'  => $city->getLatitude(),
+                    'id'         => $city->getId(),
+                    'name'       => $city->getName(),
+                    'simpleName' => $city->getSimpleName(),
+                    'zipCode'    => $city->getZipCode(),
+                    'latitude'   => $city->getLatitude(),
+                    'longitude'  => $city->getLatitude(),
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'         => $data->getId(),
-                'Name'       => $data->getName(),
-                'SimpleName' => $data->getSimpleName(),
-                'ZipCode'    => $data->getZipCode(),
-                'Latitude'   => $data->getLatitude(),
-                'Longitude'  => $data->getLatitude(),
+                'id'         => $data->getId(),
+                'name'       => $data->getName(),
+                'simpleName' => $data->getSimpleName(),
+                'zipCode'    => $data->getZipCode(),
+                'latitude'   => $data->getLatitude(),
+                'longitude'  => $data->getLatitude(),
             ];
         }
     }

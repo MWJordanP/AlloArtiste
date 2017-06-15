@@ -86,6 +86,15 @@ app:
                     - token<br>
                     - tag (string)<br>
                     - METHODE POST
+        search:
+            title: (SEARCH) Liste des urls
+            search:
+                title: Recherche
+                argument: >
+                    - id city (non obligatoire)<br>
+                    - id job (non obligatoire)<br>
+                    - id tag (non obligatoire)<br>
+                    - METHODE POST
 admin:
     menu:
         home: Accueil

@@ -104,16 +104,16 @@ class TagManager extends AbstractManager
             /** @var Tag $tag */
             foreach ($data as $tag) {
                 $array[] = [
-                    'Id'   => $tag->getId(),
-                    'Name' => $tag->getName(),
+                    'id'   => $tag->getId(),
+                    'name' => $tag->getName(),
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'   => $data->getId(),
-                'Name' => $data->getName(),
+                'id'   => $data->getId(),
+                'name' => $data->getName(),
             ];
         }
     }

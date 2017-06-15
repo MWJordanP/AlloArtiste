@@ -17,8 +17,9 @@ class TagFixtures extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 99; $i++) {
             $tag = new Tag();
+            $this->addReference('tag'.$i, $tag);
             $tag->setName('Tag '.$i);
 
             $manager->persist($tag);

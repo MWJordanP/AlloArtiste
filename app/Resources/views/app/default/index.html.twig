@@ -158,5 +158,24 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        {{ 'app.home.search.title'|trans }}
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <p class="well">
+                        <a href="{{ path('web_service_search') }}" target="_blank">
+                            {{ 'app.home.search.search.title'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_search')) }}<br>
+                        {{ 'app.home.search.search.argument'|trans|raw }}
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

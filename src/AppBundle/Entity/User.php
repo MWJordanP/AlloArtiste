@@ -56,6 +56,13 @@ class User extends BaseUser
      *
      * @ORM\Column(type="text", nullable=true)
      */
+    protected $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
     protected $picture;
 
     /**
@@ -75,7 +82,7 @@ class User extends BaseUser
     /**
      * @var Tag[]|ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="users", cascade={"persist"})
      */
     protected $tags;
 
@@ -85,6 +92,13 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="Job", inversedBy="users")
      */
     protected $job;
+
+    /**
+     * @var City
+     *
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="users")
+     */
+    protected $city;
 
     /**
      * @var Friend[]|ArrayCollection
@@ -101,12 +115,20 @@ class User extends BaseUser
     protected $inviteFriends;
 
     /**
+     * @var Picture[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="user")
+     */
+    protected $pictures;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
         parent::__construct();
         $this->tags          = new ArrayCollection();
+        $this->pictures      = new ArrayCollection();
         $this->friends       = new ArrayCollection();
         $this->inviteFriends = new ArrayCollection();
         $this->token         = rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
@@ -350,6 +372,59 @@ class User extends BaseUser
         $this->picture = $picture;
 
         return $this;
+    }
+
+    /**
+     * @return City
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param City $city
+     *
+     * @return User
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function displayTags()
+    {
+        $tags = [];
+        foreach ($this->tags as $tag) {
+            $tags[] = $tag->getName();
+        }
+
+        return !empty($tags) ? $tags : null;
     }
 
     /**

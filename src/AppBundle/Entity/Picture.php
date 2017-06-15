@@ -2,17 +2,16 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\Timestampable;
 
 /**
- * Class Tag
+ * Class Picture
  *
  * @ORM\Entity()
- * @ORM\Table(name="tags")
+ * @ORM\Table(name="pictures")
  */
-class Tag
+class Picture
 {
     use Timestampable;
 
@@ -28,24 +27,16 @@ class Tag
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     protected $name;
 
     /**
-     * @var User[]|ArrayCollection
+     * @var User
      *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="tags")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="pictures")
      */
-    protected $users;
-
-    /**
-     * Tag constructor.
-     */
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
+    protected $user;
 
     /**
      * @return int
@@ -58,7 +49,7 @@ class Tag
     /**
      * @param int $id
      *
-     * @return Tag
+     * @return Picture
      */
     public function setId($id)
     {
@@ -78,7 +69,7 @@ class Tag
     /**
      * @param string $name
      *
-     * @return Tag
+     * @return Picture
      */
     public function setName($name)
     {
@@ -88,21 +79,21 @@ class Tag
     }
 
     /**
-     * @return User[]|ArrayCollection
+     * @return User
      */
-    public function getUsers()
+    public function getUser()
     {
-        return $this->users;
+        return $this->user;
     }
 
     /**
-     * @param User[]|ArrayCollection $users
+     * @param User $user
      *
-     * @return Tag
+     * @return Picture
      */
-    public function setUsers($users)
+    public function setUser($user)
     {
-        $this->users = $users;
+        $this->user = $user;
 
         return $this;
     }

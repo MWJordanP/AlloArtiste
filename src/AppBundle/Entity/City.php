@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\Timestampable;
 
@@ -56,6 +57,21 @@ class City
      * @ORM\JoinColumn(onDelete="SET NULL")
      */
     protected $department;
+
+    /**
+     * @var User[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="User", mappedBy="city")
+     */
+    protected $users;
+
+    /**
+     * City constructor.
+     */
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -181,6 +197,26 @@ class City
     public function setDepartment($department)
     {
         $this->department = $department;
+
+        return $this;
+    }
+
+    /**
+     * @return User[]|ArrayCollection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param User[]|ArrayCollection $users
+     *
+     * @return City
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
 
         return $this;
     }

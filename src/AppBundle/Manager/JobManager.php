@@ -70,16 +70,16 @@ class JobManager extends AbstractManager
             /** @var Job $job */
             foreach ($data as $job) {
                 $array[] = [
-                    'Id'   => $job->getId(),
-                    'Name' => $job->getName(),
+                    'id'   => $job->getId(),
+                    'name' => $job->getName(),
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'   => $data->getId(),
-                'Name' => $data->getName(),
+                'id'   => $data->getId(),
+                'name' => $data->getName(),
             ];
         }
     }

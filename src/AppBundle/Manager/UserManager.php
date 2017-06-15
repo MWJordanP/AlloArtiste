@@ -2,7 +2,6 @@
 
 namespace AppBundle\Manager;
 
-use AppBundle\Entity\Job;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
@@ -103,6 +102,18 @@ class UserManager extends AbstractManager
     }
 
     /**
+     * @param null $city
+     * @param null $job
+     * @param null $tag
+     *
+     * @return array
+     */
+    public function search($city = null, $job = null, $tag = null)
+    {
+        return $this->repository->search($city, $job, $tag);
+    }
+
+    /**
      * @param mixed $data
      *
      * @return array
@@ -114,32 +125,101 @@ class UserManager extends AbstractManager
             /** @var User $user */
             foreach ($data as $user) {
                 $array[] = [
-                    'Id'           => $user->getId(),
-                    'LastName'     => $user->getLastName(),
-                    'FirsName'     => $user->getFirstName(),
-                    'Phone'        => $user->getPhone(),
-                    'Email'        => $user->getEmail(),
-                    'Picture'      => $user->getPicture(),
-                    'Token'        => $user->getToken(),
-                    'Street'       => $user->getStreet(),
-                    'StreetNumber' => $user->getStreetNumber(),
-                    'Job'          => null !== $user->getJob() ? $user->getJob()->getName() : null,
+                    'id'           => $user->getId(),
+                    'username'     => $user->getUsername(),
+                    'lastName'     => $user->getLastName(),
+                    'firsName'     => $user->getFirstName(),
+                    'phone'        => $user->getPhone(),
+                    'email'        => $user->getEmail(),
+                    'images'       => null,
+                    'description'  => $user->getDescription(),
+                    'picture'      => $user->getPicture(),
+                    'token'        => $user->getToken(),
+                    'street'       => $user->getStreet(),
+                    'streetNumber' => $user->getStreetNumber(),
+                    'job'          => null !== $user->getJob() ? $user->getJob()->getName() : null,
+                    'tags'         => $user->displayTags(),
+                    'city'         => null !== $user->getCity() ? $user->getCity()->getName() : null,
+                    'longitude'    => null !== $user->getCity() ? $user->getCity()->getLongitude() : null,
+                    'latitude'     => null !== $user->getCity() ? $user->getCity()->getLatitude() : null,
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'           => $data->getId(),
-                'LastName'     => $data->getLastName(),
-                'FirsName'     => $data->getFirstName(),
-                'Phone'        => $data->getPhone(),
-                'Email'        => $data->getEmail(),
-                'Picture'      => $data->getPicture(),
-                'Token'        => $data->getToken(),
-                'Street'       => $data->getStreet(),
-                'StreetNumber' => $data->getStreetNumber(),
-                'Job'          => null !== $data->getJob() ? $data->getJob()->getName() : null,
+                'id'           => $data->getId(),
+                'username'     => $data->getUsername(),
+                'lastName'     => $data->getLastName(),
+                'firsName'     => $data->getFirstName(),
+                'phone'        => $data->getPhone(),
+                'email'        => $data->getEmail(),
+                'images'       => null,
+                'description'  => $data->getDescriptionm(),
+                'picture'      => $data->getPicture(),
+                'token'        => $data->getToken(),
+                'street'       => $data->getStreet(),
+                'streetNumber' => $data->getStreetNumber(),
+                'job'          => null !== $data->getJob() ? $data->getJob()->getName() : null,
+                'tags'         => $data->displayTags(),
+                'city'         => null !== $data->getCity() ? $data->getCity()->getName() : null,
+                'longitude'    => null !== $data->getCity() ? $data->getCity()->getLongitude() : null,
+                'latitude'     => null !== $data->getCity() ? $data->getCity()->getLatitude() : null,
+            ];
+        }
+    }
+
+    /**
+     * @param mixed $data
+     *
+     * @return array
+     */
+    public function convertArraySearch($data)
+    {
+        if (is_array($data)) {
+            $array = [];
+            /** @var User $user */
+            foreach ($data as $user) {
+                $array[] = [
+                    'id'           => $user->getId(),
+                    'username'     => $user->getUsername(),
+                    'lastName'     => $user->getLastName(),
+                    'firsName'     => $user->getFirstName(),
+                    'images'       => null,
+                    'phone'        => $user->getPhone(),
+                    'email'        => $user->getEmail(),
+                    'picture'      => $user->getPicture(),
+                    'street'       => $user->getStreet(),
+                    'description'  => $user->getDescription(),
+                    'streetNumber' => $user->getStreetNumber(),
+                    'job'          => null !== $user->getJob() ? $user->getJob()->getName() : null,
+                    'tags'         => $user->displayTags(),
+                    'city'         => null !== $user->getCity() ? $user->getCity()->getName() : null,
+                    'longitude'    => null !== $user->getCity() ? $user->getCity()->getLongitude() : null,
+                    'latitude'     => null !== $user->getCity() ? $user->getCity()->getLatitude() : null,
+                ];
+            }
+
+            return $array;
+        } else {
+            return [
+                'id'           => $data->getId(),
+                'username'     => $data->getUsername(),
+                'lastName'     => $data->getLastName(),
+                'firsName'     => $data->getFirstName(),
+                'images'       => null,
+                'phone'        => $data->getPhone(),
+                'email'        => $data->getEmail(),
+                'description'  => $data->getDescription(),
+                'picture'      => $data->getPicture(),
+                'token'        => $data->getToken(),
+                'street'       => $data->getStreet(),
+                'streetNumber' => $data->getStreetNumber(),
+                'job'          => null !== $data->getJob() ? $data->getJob()->getName() : null,
+                'tags'         => $data->displayTags(),
+                'city'         => null !== $data->getCity() ? $data->getCity()->getName() : null,
+                'longitude'    => null !== $data->getCity() ? $data->getCity()->getLongitude() : null,
+                'latitude'     => null !== $data->getCity() ? $data->getCity()->getLatitude() : null,
             ];
         }
     }

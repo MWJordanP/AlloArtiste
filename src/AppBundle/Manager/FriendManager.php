@@ -101,23 +101,23 @@ class FriendManager extends AbstractManager
             /** @var Friend $friend */
             foreach ($data as $friend) {
                 $array[] = [
-                    'Id'       => $friend->getFriend()->getId(),
-                    'LastName' => $friend->getFriend()->getLastName(),
-                    'FirsName' => $friend->getFriend()->getFirstName(),
-                    'Phone'    => $friend->getFriend()->getPhone(),
-                    'Email'    => $friend->getFriend()->getEmail(),
-                    'Picture'  => $friend->getFriend()->getPicture(),
+                    'id'       => $friend->getFriend()->getId(),
+                    'lastName' => $friend->getFriend()->getLastName(),
+                    'firsName' => $friend->getFriend()->getFirstName(),
+                    'phone'    => $friend->getFriend()->getPhone(),
+                    'email'    => $friend->getFriend()->getEmail(),
+                    'picture'  => $friend->getFriend()->getPicture(),
                 ];
             }
 
             return $array;
         } else {
             return [
-                'Id'       => $data->getFriend()->getId(),
-                'LastName' => $data->getFriend()->getLastName(),
-                'FirsName' => $data->getFriend()->getFirstName(),
-                'Phone'    => $data->getFriend()->getPhone(),
-                'Email'    => $data->getFriend()->getEmail(),
+                'id'       => $data->getFriend()->getId(),
+                'lastName' => $data->getFriend()->getLastName(),
+                'firsName' => $data->getFriend()->getFirstName(),
+                'phone'    => $data->getFriend()->getPhone(),
+                'email'    => $data->getFriend()->getEmail(),
             ];
         }
     }

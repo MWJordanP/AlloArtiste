@@ -28,7 +28,7 @@ class CityFixtures extends AbstractFixture implements OrderedFixtureInterface
             $flushFrequency = 1000;
             $i              = 1;
 
-            foreach ($data as $row) {
+            foreach ($data as $key => $row) {
                 $num = substr($row['simpleNum'], 0, 2);
                 $num = trim($num);
                 if (strlen($num) < 2) {
@@ -36,6 +36,7 @@ class CityFixtures extends AbstractFixture implements OrderedFixtureInterface
                 }
                 $department = $manager->getRepository('AppBundle:Department')->findOneBy(['simpleNum' => $num]);
                 $city       = new City();
+                $this->addReference('city'.$key, $city);
                 $city
                     ->setName($row['name'])
                     ->setSimpleName($row['simpleName'])

@@ -19,6 +19,7 @@ class JobFixtures extends AbstractFixture implements OrderedFixtureInterface
     {
         for ($i = 0; $i < 20; $i++) {
             $job = new Job();
+            $this->addReference('job'.$i, $job);
             $job->setName('Job '.$i);
 
             $manager->persist($job);
