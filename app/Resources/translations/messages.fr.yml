@@ -147,10 +147,12 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
+                    - image<br>
                     - description<br>
                     - street<br>
                     - streetNumber<br>
                     - city<br>
+                    - job<br>
                     - longitude<br>
                     - latitude<br>
             add:
@@ -165,6 +167,8 @@ app:
                     - username<br>
                     - lastName<br>
                     - firsName<br>
+                    - image<br>
+                    - job<br>
                     - phone<br>
                     - email<br>
                     - description<br>
@@ -258,7 +262,7 @@ app:
                     - id tag (non obligatoire)<br>
                     - METHODE POST
                 back: >
-                    ATTENTION ARRAY D'UTILISATEUR
+                    ATTENTION ARRAY DE CONTACT
                     Dans RESPONSE<br>
                     - id<br>
                     - username<br>
@@ -266,14 +270,12 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images (ATTENTION ARRAY) contient - name<br>
+                    - image<br>
                     - description<br>
-                    - picture<br>
                     - street<br>
                     - streetNumber<br>
-                    - job<br>
-                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
+                    - job<br>
                     - longitude<br>
                     - latitude<br>
 admin:
