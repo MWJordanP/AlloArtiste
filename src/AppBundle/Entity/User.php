@@ -421,7 +421,10 @@ class User extends BaseUser
     {
         $tags = [];
         foreach ($this->tags as $tag) {
-            $tags[] = $tag->getName();
+            $tags[] = [
+                'id'   => $tag->getId(),
+                'name' => $tag->getName(),
+            ];
         }
 
         return !empty($tags) ? $tags : null;
