@@ -155,7 +155,7 @@ class UserManager extends AbstractManager
                 'phone'        => $data->getPhone(),
                 'email'        => $data->getEmail(),
                 'images'       => null,
-                'description'  => $data->getDescriptionm(),
+                'description'  => $data->getDescription(),
                 'picture'      => $data->getPicture(),
                 'token'        => $data->getToken(),
                 'street'       => $data->getStreet(),

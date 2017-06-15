@@ -25,6 +25,8 @@ error:
         user_or_contact_not_found: User or contact not found
     auth:
         password_not_valid: Password not valid
+    picture:
+        token_picture_empty: Token or picture is empty
 
 email:
     change_password:
@@ -47,14 +49,14 @@ app:
                 - firsName<br>
                 - phone<br>
                 - email<br>
-                - images<br>
+                - images (ATTENTION ARRAY) contient - name<br>
                 - description<br>
                 - picture<br>
                 - token<br>
                 - street<br>
                 - streetNumber<br>
                 - job<br>
-                - tags ( ATTENTION ARRAY )<br>
+                - tags ( ATTENTION ARRAY contient - name )<br>
                 - city<br>
                 - longitude<br>
                 - latitude<br>
@@ -72,14 +74,14 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
                     - description<br>
                     - picture<br>
                     - token<br>
                     - street<br>
                     - streetNumber<br>
                     - job<br>
-                    - tags ( ATTENTION ARRAY )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
                     - longitude<br>
                     - latitude<br>
@@ -96,14 +98,14 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
                     - description<br>
                     - picture<br>
                     - token<br>
                     - street<br>
                     - streetNumber<br>
                     - job<br>
-                    - tags ( ATTENTION ARRAY )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
                     - longitude<br>
                     - latitude<br>
@@ -119,14 +121,14 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
                     - description<br>
                     - picture<br>
                     - token<br>
                     - street<br>
                     - streetNumber<br>
                     - job<br>
-                    - tags ( ATTENTION ARRAY )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
                     - longitude<br>
                     - latitude<br>
@@ -203,14 +205,14 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
                     - description<br>
                     - picture<br>
                     - token<br>
                     - street<br>
                     - streetNumber<br>
                     - job<br>
-                    - tags ( ATTENTION ARRAY )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
                     - longitude<br>
                     - latitude<br>
@@ -235,14 +237,14 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
                     - description<br>
                     - picture<br>
                     - token<br>
                     - street<br>
                     - streetNumber<br>
                     - job<br>
-                    - tags ( ATTENTION ARRAY )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
                     - longitude<br>
                     - latitude<br>
@@ -264,13 +266,13 @@ app:
                     - firsName<br>
                     - phone<br>
                     - email<br>
-                    - images<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
                     - description<br>
                     - picture<br>
                     - street<br>
                     - streetNumber<br>
                     - job<br>
-                    - tags ( ATTENTION ARRAY )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
                     - city<br>
                     - longitude<br>
                     - latitude<br>
