@@ -182,13 +182,8 @@ class UserManager extends AbstractManager
             foreach ($data as $user) {
                 $array[] = [
                     'id'           => $user->getId(),
-                    'lastName'     => $user->getLastName(),
                     'username'     => $user->getUsername(),
-                    'firsName'     => $user->getFirstName(),
-                    'phone'        => $user->getPhone(),
-                    'email'        => $user->getEmail(),
                     'picture'      => $user->getPicture(),
-                    'description'  => $user->getDescription(),
                     'street'       => $user->getStreet(),
                     'streetNumber' => $user->getStreetNumber(),
                     'job'          => null !== $user->getJob() ? $user->getJob()->getName() : null,
@@ -202,13 +197,8 @@ class UserManager extends AbstractManager
         } else {
             return [
                 'id'           => $data->getId(),
-                'lastName'     => $data->getLastName(),
                 'username'     => $data->getUsername(),
-                'firsName'     => $data->getFirstName(),
-                'phone'        => $data->getPhone(),
-                'email'        => $data->getEmail(),
                 'picture'      => $data->getPicture(),
-                'description'  => $data->getDescription(),
                 'street'       => $data->getStreet(),
                 'streetNumber' => $data->getStreetNumber(),
                 'job'          => null !== $data->getJob() ? $data->getJob()->getName() : null,

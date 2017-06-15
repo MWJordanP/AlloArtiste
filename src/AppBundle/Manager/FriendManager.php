@@ -102,13 +102,8 @@ class FriendManager extends AbstractManager
             foreach ($data as $friend) {
                 $array[] = [
                     'id'           => $friend->getFriend()->getId(),
-                    'lastName'     => $friend->getFriend()->getLastName(),
                     'username'     => $friend->getFriend()->getUsername(),
-                    'firsName'     => $friend->getFriend()->getFirstName(),
-                    'phone'        => $friend->getFriend()->getPhone(),
-                    'email'        => $friend->getFriend()->getEmail(),
                     'picture'      => $friend->getFriend()->getPicture(),
-                    'description'  => $friend->getFriend()->getDescription(),
                     'street'       => $friend->getFriend()->getStreet(),
                     'streetNumber' => $friend->getFriend()->getStreetNumber(),
                     'job'          => null !== $friend->getFriend()->getJob() ? $friend->getFriend()->getJob()->getName() : null,
@@ -122,16 +117,11 @@ class FriendManager extends AbstractManager
         } else {
             return [
                 'id'           => $data->getFriend()->getId(),
-                'lastName'     => $data->getFriend()->getLastName(),
                 'username'     => $data->getFriend()->getUsername(),
-                'firsName'     => $data->getFriend()->getFirstName(),
-                'phone'        => $data->getFriend()->getPhone(),
-                'email'        => $data->getFriend()->getEmail(),
-                'job'          => null !== $data->getJob() ? $data->getJob()->getName() : null,
                 'picture'      => $data->getFriend()->getPicture(),
-                'description'  => $data->getFriend()->getDescription(),
                 'street'       => $data->getFriend()->getStreet(),
                 'streetNumber' => $data->getFriend()->getStreetNumber(),
+                'job'          => null !== $data->getFriend()->getJob() ? $data->getFriend()->getJob()->getName() : null,
                 'city'         => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getName() : null,
                 'longitude'    => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getLongitude() : null,
                 'latitude'     => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getLatitude() : null,

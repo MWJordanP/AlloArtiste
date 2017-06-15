@@ -165,13 +165,8 @@ app:
                     Dans RESPONSE<br>
                     - id<br>
                     - username<br>
-                    - lastName<br>
-                    - firsName<br>
                     - image<br>
                     - job<br>
-                    - phone<br>
-                    - email<br>
-                    - description<br>
                     - street<br>
                     - streetNumber<br>
                     - city<br>
@@ -266,12 +261,7 @@ app:
                     Dans RESPONSE<br>
                     - id<br>
                     - username<br>
-                    - lastName<br>
-                    - firsName<br>
-                    - phone<br>
-                    - email<br>
                     - image<br>
-                    - description<br>
                     - street<br>
                     - streetNumber<br>
                     - city<br>
