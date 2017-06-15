@@ -23,23 +23,31 @@ class FriendController extends Controller
      */
     public function contactAction(Request $request)
     {
-        $token       = $request->get('token');
-        $userManager = $this->get('app.manager.user');
-        $user        = $userManager->getToken($token, 'ROLE_ARTIST');
-        if (null !== $user) {
-            $friendManager = $this->get('app.manager.friend');
-            $friends       = $friendManager->getByUser($user);
+        $token = $request->get('token');
+        if (!empty($token)) {
+            $userManager = $this->get('app.manager.user');
+            $user        = $userManager->getToken($token);
+            if (null !== $user) {
+                $friendManager = $this->get('app.manager.friend');
+                $friends       = $friendManager->getByUser($user);
+
+                return new JsonResponse([
+                    'response' => $friendManager->convertArray($friends),
+                    'error'    => null,
+                    'status'   => true,
+                ]);
+            }
 
             return new JsonResponse([
-                'response' => $friendManager->convertArray($friends),
-                'error'    => 'User not found',
+                'response' => [],
+                'error'    => $this->get('translator')->trans('error.user.not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
             'response' => [],
-            'error'    => 'User not found',
+            'error'    => $this->get('translator')->trans('error.user.token_empty'),
             'status'   => false,
         ]);
     }
@@ -74,21 +82,21 @@ class FriendController extends Controller
 
                 return new JsonResponse([
                     'response' => [],
-                    'error'    => 'Contact exist',
+                    'error'    => $this->get('translator')->trans('error.friend.exist'),
                     'status'   => true,
                 ]);
             }
 
             return new JsonResponse([
                 'response' => [],
-                'error'    => 'User or contact not found',
+                'error'    => $this->get('translator')->trans('error.friend.user_or_contact_not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
             'response' => [],
-            'error'    => 'Id or token is empty',
+            'error'    => $this->get('translator')->trans('error.user.id_token_empty'),
             'status'   => false,
         ]);
     }

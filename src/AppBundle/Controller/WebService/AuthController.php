@@ -37,7 +37,7 @@ class AuthController extends Controller
                 ]);
             } else {
                 return new JsonResponse([
-                    'error'    => 'Password not valid',
+                    'error'    => $this->get('translator')->trans('error.auth.password_not_valid'),
                     'response' => [],
                     'status'   => false,
                 ]);
@@ -47,7 +47,7 @@ class AuthController extends Controller
         return new JsonResponse([
             'response' => [],
             'status'   => false,
-            'error'    => 'User not exist',
+            'error'    => $this->get('translator')->trans('error.user.not_found'),
         ]);
     }
 }

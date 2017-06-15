@@ -20,15 +20,34 @@ class UserController extends Controller
      *
      * @return JsonResponse
      *
-     * @Route("/detail/artist", name="web_service_user_detail")
+     * @Route("/detail", name="web_service_user_detail")
      */
-    public function detailArtistAction(Request $request)
+    public function detailAction(Request $request)
     {
-        $token       = $request->get('token');
-        $userManager = $this->get('app.manager.user');
-        $user        = $userManager->getToken($token, 'ROLE_ARTIST');
+        $id = $request->get('id');
+        if (!empty($id)) {
+            $userManager = $this->get('app.manager.user');
+            $user        = $userManager->getById($id);
+            if (null !== $user) {
+                return new JsonResponse([
+                    'response' => $userManager->convertArray($user),
+                    'error'    => null,
+                    'status'   => true,
+                ]);
+            }
 
-        return new JsonResponse();
+            return new JsonResponse([
+                'response' => [],
+                'error'    => $this->get('translator')->trans('error.user.not_found'),
+                'status'   => false,
+            ]);
+        }
+
+        return new JsonResponse([
+            'response' => [],
+            'error'    => $this->get('translator')->trans('error.user.id_empty'),
+            'status'   => false,
+        ]);
     }
 
     /**
@@ -58,14 +77,14 @@ class UserController extends Controller
 
             return new JsonResponse([
                 'response' => [],
-                'error'    => 'User not found',
+                'error'    => $this->get('translator')->trans('error.user.not_found'),
                 'status'   => false,
             ]);
         }
 
         return new JsonResponse([
             'response' => [],
-            'error'    => 'Token or image is empty',
+            'error'    => $this->get('translator')->trans('error.user.token_image_empty'),
             'status'   => false,
         ]);
     }
@@ -103,13 +122,13 @@ class UserController extends Controller
             return new JsonResponse([
                 'response' => [],
                 'error'    => null,
-                'status'   => false,
+                'status'   => true,
             ]);
         }
 
         return new JsonResponse([
             'response' => [],
-            'error'    => 'User not exist',
+            'error'    => $this->get('translator')->trans('error.user.not_found'),
             'status'   => false,
         ]);
     }

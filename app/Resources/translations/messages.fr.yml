@@ -8,6 +8,19 @@ common:
         delete: Supprimer
         save: Sauvegarder
 
+error:
+    user:
+        not_found: User not found
+        token_image_empty: Token or image is empty
+        id_empty: Id is empty
+        id_token_empty: Id or token is empty
+        token_empty: Token is empty
+    friend:
+        exist: Contact already exists
+        user_or_contact_not_found: User or contact not found
+    auth:
+        password_not_valid: Password not valid
+
 email:
     change_password:
         title: Nouveau mot de passe
@@ -32,6 +45,10 @@ app:
                 argument: >
                     - token<br>
                     - image (string)
+            detail:
+                title: Détail
+                argument: >
+                    - id
         contact:
             title: (CONTACT)
             list:
