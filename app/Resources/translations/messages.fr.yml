@@ -163,7 +163,6 @@ app:
             edit_profile:
                 title: Edition du profil
                 argument: >
-                    - token<br>
                     - username<br>
                     - lastName<br>
                     - firsName<br>
