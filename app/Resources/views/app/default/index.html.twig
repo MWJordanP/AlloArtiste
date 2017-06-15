@@ -54,6 +54,13 @@
                         {{ 'app.home.user.add_picture.argument'|trans|raw }}<br>
                         {{ 'app.home.user.add_picture.back'|trans|raw }}
                     </p>
+                    <p class="well">
+                        <a href="{{ path('web_service_user_edit_profile') }}" target="_blank">
+                            {{ 'app.home.user.edit_profile.title'|trans }}
+                        </a> : {{ absolute_url(path('web_service_user_edit_profile')) }}<br>
+                        {{ 'app.home.user.edit_profile.argument'|trans|raw }}<br>
+                        {{ 'app.home.user.edit_profile.back'|trans|raw }}
+                    </p>
                 </div>
             </div>
         </div>

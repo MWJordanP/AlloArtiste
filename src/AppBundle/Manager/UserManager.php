@@ -6,6 +6,7 @@ use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Knp\Component\Pager\Paginator;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use FOS\UserBundle\Doctrine\UserManager as BaseUser;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -166,6 +167,59 @@ class UserManager extends AbstractManager
                 'longitude'    => null !== $data->getCity() ? $data->getCity()->getLongitude() : null,
                 'latitude'     => null !== $data->getCity() ? $data->getCity()->getLatitude() : null,
             ];
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @param User    $user
+     *
+     * @return bool
+     */
+    public function updateProfile(Request $request, User $user)
+    {
+        $username     = $request->request->get('username');
+        $lastName     = $request->request->get('lastName');
+        $firsName     = $request->request->get('firsName');
+        $email        = $request->request->get('email');
+        $streetNumber = $request->request->get('streetNumber');
+        $street       = $request->request->get('street');
+        $job          = $request->request->get('job');
+        $tags         = $request->request->get('tags');
+        $city         = $request->request->get('city');
+        $description  = $request->request->get('description');
+
+        $job  = $this->em->getRepository('AppBundle:Job')->find($job);
+        $city = $this->em->getRepository('AppBundle:City')->find($city);
+
+        $user
+            ->setUsername($username)
+            ->setLastName($lastName)
+            ->setFirstName($firsName)
+            ->setEmail($email)
+            ->setStreet($street)
+            ->setStreetNumber($streetNumber)
+            ->setDescription($description)
+            ->setJob($job)
+            ->setCity($city);
+
+        $user->getTags()->clear();
+
+        foreach ($tags as $value) {
+            $tag = $this->em->getRepository('AppBundle:Tag')->find($value);
+            if (null !== $tag) {
+                if (!$user->getTags()->contains($tag)) {
+                    $user->getTags()->add($tag);
+                }
+            }
+        }
+
+        try {
+            $this->userManager->updateUser($user);
+
+            return true;
+        } catch (\Exception $exception) {
+            return false;
         }
     }
 

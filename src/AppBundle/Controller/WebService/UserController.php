@@ -133,4 +133,39 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
+     * @Route("/edit-profile", name="web_service_user_edit_profile")
+     */
+    public function updateProfileAction(Request $request)
+    {
+        $token       = $request->request->get('token');
+        $userManager = $this->get('app.manager.user');
+        $user        = $userManager->getToken($token);
+        if (null !== $user) {
+            $check = $userManager->updateProfile($request, $user);
+            if ($check) {
+                return new JsonResponse([
+                    'response' => $userManager->convertArray($user),
+                    'error'    => null,
+                    'status'   => true,
+                ]);
+            }
+
+            return new JsonResponse([
+                'response' => null,
+                'error'    => $this->get('translator')->trans('error.user.error_edit_profile'),
+                'status'   => false,
+            ]);
+        }
+
+        return new JsonResponse([
+            'response' => null,
+            'error'    => $this->get('translator')->trans('error.user.not_found'),
+            'status'   => false,
+        ]);
+    }
 }

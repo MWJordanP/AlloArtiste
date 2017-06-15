@@ -15,6 +15,7 @@ error:
         id_empty: Id is empty
         id_token_empty: Id or token is empty
         token_empty: Token is empty
+        error_edit_profile: Error edit profile user
     tag:
         token_tag_empty: Token or tag is empty
     job:
@@ -140,6 +141,42 @@ app:
                 title: Détail
                 argument: >
                     - id
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job (ATTENTION ARRAY -id/ - name )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
+                    - city (ATTENTION ARRAY -id / - name )<br>
+                    - longitude<br>
+                    - latitude<br>
+            edit_profile:
+                title: Edition du profil
+                argument: >
+                    - token<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - description<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags<br>
+                    - city<br>
+                    - METHODE POST
                 back: >
                     Dans RESPONSE<br>
                     - id<br>
