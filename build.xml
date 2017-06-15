@@ -12,16 +12,13 @@
         <exec command="git pull origin master" passthru="true" checkreturn="true"/>
         <exec command="rm -rf var/cache/*" passthru="true" checkreturn="true"/>
         <echo message="Create database..."/>
-        <exec command="php bin/console doctrine:database:drop --force -e=prod" passthru="true"/>
         <exec command="php bin/console doctrine:database:create -e=prod" passthru="true"/>
         <echo message="Composer install..."/>
         <exec command="SYMFONY_ENV=prod composer install --no-dev --optimize-autoloader" passthru="true" checkreturn="true"/>
         <echo message="Clear cache..."/>
         <exec command="rm -rf var/cache/*" passthru="true" checkreturn="true"/>
         <echo message="Reset database..."/>
-        <exec command="php bin/console doctrine:schema:update --force -e=prod" passthru="true"/>
-        <echo message="Load fixtures..."/>
-        <exec command="php bin/console doctrine:fixtures:load --append -e=prod" passthru="true"/>
+        <exec command="php bin/console doctrine:schema:update --force --complete -e=prod" passthru="true"/>
         <echo message="Disable index..."/>
         <exec command="echo 'User-agent: *${line.separator}Disallow: /' > web/robots.txt" passthru="true"/>
     </target>
