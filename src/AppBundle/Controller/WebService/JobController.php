@@ -37,6 +37,41 @@ class JobController extends Controller
      *
      * @return JsonResponse
      *
+     * @Route("/detail", name="web_service_job_detail")
+     */
+    public function detailAction(Request $request)
+    {
+        $id = $request->get('id');
+        if (!empty($id)) {
+            $jobManager = $this->get('app.manager.job');
+            $job        = $jobManager->getById($id);
+            if (null !== $job) {
+                return new JsonResponse([
+                    'response' => $jobManager->convertArray($job),
+                    'error'    => null,
+                    'status'   => true,
+                ]);
+            }
+
+            return new JsonResponse([
+                'response' => null,
+                'error'    => $this->get('translator')->trans('error.job.job_not_found'),
+                'status'   => false,
+            ]);
+        }
+
+        return new JsonResponse([
+            'response' => null,
+            'error'    => $this->get('translator')->trans('error.job.id_empty'),
+            'status'   => false,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
      * @Route("/add", name="web_service_job_add")
      */
     public function addAction(Request $request)

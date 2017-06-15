@@ -120,6 +120,14 @@
                         {{ 'app.home.job.add.argument'|trans|raw }}<br>
                         {{ 'app.home.job.add.back'|trans|raw }}<br>
                     </p>
+                    <p class="well">
+                        <a href="{{ path('web_service_job_detail') }}" target="_blank">
+                            {{ 'app.home.job.detail.title'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_job_detail')) }}<br>
+                        {{ 'app.home.job.detail.argument'|trans|raw }}<br>
+                        {{ 'app.home.job.detail.back'|trans|raw }}<br>
+                    </p>
                 </div>
             </div>
         </div>

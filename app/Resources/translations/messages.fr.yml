@@ -20,6 +20,8 @@ error:
     job:
         token_job_empty: Token or job is empty
         user_or_job_empty: User or job not found
+        id_empty: Id is empty
+        job_not_found: Job not found
     friend:
         exist: Contact already exists
         user_or_contact_not_found: User or contact not found
@@ -235,6 +237,14 @@ app:
                     - city<br>
                     - longitude<br>
                     - latitude<br>
+            detail:
+                title: Détail d'un job
+                argument: >
+                    - id du job<br>
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - name<br>
         tag:
             title: (TAG) Liste des urls
             all: Liste compléte des tags
