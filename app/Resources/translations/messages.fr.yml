@@ -17,6 +17,9 @@ error:
         token_empty: Token is empty
     tag:
         token_tag_empty: Token or tag is empty
+    job:
+        token_job_empty: Token or job is empty
+        user_or_job_empty: User or job not found
     friend:
         exist: Contact already exists
         user_or_contact_not_found: User or contact not found
@@ -68,9 +71,21 @@ app:
         job:
             title: (JOB) Liste des urls
             all: Liste compléte des jobs
+            add:
+                title: Ajouter un job
+                argument: >
+                    - token<br>
+                    - id du job<br>
+                    - METHODE POST
         tag:
             title: (TAG) Liste des urls
             all: Liste compléte des tags
+            add:
+                title: Ajouter un tag
+                argument: >
+                    - token<br>
+                    - tag (string)<br>
+                    - METHODE POST
 admin:
     menu:
         home: Accueil

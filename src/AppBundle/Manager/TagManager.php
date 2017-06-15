@@ -3,6 +3,7 @@
 namespace AppBundle\Manager;
 
 use AppBundle\Entity\Tag;
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -47,6 +48,18 @@ class TagManager extends AbstractManager
     }
 
     /**
+     * @param User $user
+     *
+     * @return Tag[]|array
+     */
+    public function getByUser(User $user)
+    {
+        $tags = $this->repository->findBy(['users' => $user]);
+
+        return $tags;
+    }
+
+    /**
      * @param integer $id
      *
      * @return Tag
@@ -57,6 +70,24 @@ class TagManager extends AbstractManager
         if (null === $tag) {
             throw new NotFoundHttpException('Tag not found');
         }
+
+        return $tag;
+    }
+
+    /**
+     * @param User   $user
+     * @param string $string
+     *
+     * @return Tag
+     */
+    public function create(User $user, $string)
+    {
+        $tag = new Tag();
+        $tag
+            ->setName($string)
+            ->getUsers()->add($user);
+
+        $this->save($tag);
 
         return $tag;
     }

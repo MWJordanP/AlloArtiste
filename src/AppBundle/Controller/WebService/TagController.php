@@ -46,10 +46,27 @@ class TagController extends Controller
         if (!empty($token) && is_string($token) && !empty($tag) && is_string($tag)) {
             $userManager = $this->get('app.manager.user');
             $user        = $userManager->getToken($token);
+            if (null !== $user) {
+                $tagManager = $this->get('app.manager.tag');
+                $tagManager->create($user, $tag);
+                $tags = $tagManager->getByUser($user);
+
+                return new JsonResponse([
+                    'response' => $tagManager->convertArray($tags),
+                    'error'    => null,
+                    'status'   => true,
+                ]);
+            }
+
+            return new JsonResponse([
+                'response' => null,
+                'error'    => $this->get('translator')->trans('error.user.not_found'),
+                'status'   => false,
+            ]);
         }
 
         return new JsonResponse([
-            'response' => [],
+            'response' => null,
             'error'    => $this->get('translator')->trans('error.tag.token_tag_empty'),
             'status'   => false,
         ]);

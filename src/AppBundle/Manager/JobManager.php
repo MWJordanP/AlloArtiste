@@ -54,9 +54,6 @@ class JobManager extends AbstractManager
     public function getById($id)
     {
         $job = $this->repository->find($id);
-        if (null === $job) {
-            throw new NotFoundHttpException('Job not found');
-        }
 
         return $job;
     }

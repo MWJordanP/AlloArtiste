@@ -123,6 +123,7 @@ class UserManager extends AbstractManager
                     'Token'        => $user->getToken(),
                     'Street'       => $user->getStreet(),
                     'StreetNumber' => $user->getStreetNumber(),
+                    'Job'          => null !== $user->getJob() ? $user->getJob()->getName() : null,
                 ];
             }
 
@@ -138,6 +139,7 @@ class UserManager extends AbstractManager
                 'Token'        => $data->getToken(),
                 'Street'       => $data->getStreet(),
                 'StreetNumber' => $data->getStreetNumber(),
+                'Job'          => null !== $data->getJob() ? $data->getJob()->getName() : null,
             ];
         }
     }

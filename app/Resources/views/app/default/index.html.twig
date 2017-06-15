@@ -99,7 +99,13 @@
                         </a> :
                         {{ absolute_url(path('web_service_job_all')) }}
                     </p>
-                    <p class="well"></p>
+                    <p class="well">
+                        <a href="{{ path('web_service_job_add') }}" target="_blank">
+                            {{ 'app.home.job.add.title'|trans }}
+                        </a> :
+                        {{ absolute_url(path('web_service_job_add')) }}<br>
+                        {{ 'app.home.job.add.argument'|trans|raw }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -118,7 +124,12 @@
                         </a> :
                         {{ absolute_url(path('web_service_tag_all')) }}
                     </p>
-                    <p class="well"></p>
+                    <p class="well">
+                        <a href="{{ path('web_service_tag_add') }}" target="_blank">
+                            {{ 'app.home.tag.add.title'|trans }}
+                        </a> : {{ absolute_url(path('web_service_tag_add')) }}<br>
+                        {{ 'app.home.tag.add.argument'|trans|raw }}
+                    </p>
                 </div>
             </div>
         </div>
