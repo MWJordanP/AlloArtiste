@@ -282,9 +282,9 @@ app:
             search:
                 title: Recherche
                 argument: >
-                    - id city (non obligatoire)<br>
-                    - id job (non obligatoire)<br>
-                    - id tag (non obligatoire)<br>
+                    - city (l'identifiant) (non obligatoire)<br>
+                    - job (l'identifiant) (non obligatoire)<br>
+                    - tag (l'identifiant) (non obligatoire)<br>
                     - METHODE POST
                 back: >
                     ATTENTION ARRAY DE CONTACT
