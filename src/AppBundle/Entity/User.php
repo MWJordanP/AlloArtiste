@@ -447,6 +447,36 @@ class User extends BaseUser
     }
 
     /**
+     * @return array|null
+     */
+    public function displayCity()
+    {
+        if (null !== $this->city) {
+            return [
+                'id'   => $this->city->getId(),
+                'name' => $this->city->getName(),
+            ];
+        }
+
+        return null;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function displayJob()
+    {
+        if (null !== $this->job) {
+            return [
+                'id'   => $this->job->getId(),
+                'name' => $this->job->getName(),
+            ];
+        }
+
+        return null;
+    }
+
+    /**
      * @return string
      */
     public function getDisplayName()
