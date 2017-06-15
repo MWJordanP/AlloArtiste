@@ -86,10 +86,35 @@ app:
                     - longitude<br>
                     - latitude<br>
             add_image:
-                title: Ajout d'une image
+                title: Ajout du logo de l'utilisateur
                 argument: >
                     - token<br>
                     - image (string)
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
+            add_picture:
+                title: Ajout d'une image pour la galerie
+                argument: >
+                    - token<br>
+                    - picture (string)
+                    - METHODE POST
                 back: >
                     Dans RESPONSE<br>
                     - id<br>

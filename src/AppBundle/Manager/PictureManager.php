@@ -47,6 +47,24 @@ class PictureManager extends AbstractManager
     }
 
     /**
+     * @param User   $user
+     * @param string $string
+     *
+     * @return Picture
+     */
+    public function create(User $user, $string)
+    {
+        $picture = new Picture();
+        $picture
+            ->setName($string)
+            ->setUser($user);
+
+        $this->save($picture);
+
+        return $picture;
+    }
+
+    /**
      * @param integer $id
      *
      * @return Picture

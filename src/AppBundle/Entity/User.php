@@ -431,6 +431,22 @@ class User extends BaseUser
     }
 
     /**
+     * @return array|null
+     */
+    public function displayPictures()
+    {
+        $pictures = [];
+        foreach ($this->pictures as $picture) {
+            $pictures[] = [
+                'id'   => $picture->getId(),
+                'name' => $picture->getName(),
+            ];
+        }
+
+        return !empty($pictures) ? $pictures : null;
+    }
+
+    /**
      * @return string
      */
     public function getDisplayName()

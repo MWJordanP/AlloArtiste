@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class PictureController
@@ -31,7 +30,7 @@ class PictureController extends Controller
             $user        = $userManager->getToken($token);
             if (null !== $user) {
                 $pictureManager = $this->get('app.manager.picture');
-                $userManager->userManager->updateUser($user);
+                $pictureManager->create($user, $picture);
 
                 return new JsonResponse([
                     'response' => $userManager->convertArray($user),
