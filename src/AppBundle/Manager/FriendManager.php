@@ -101,12 +101,18 @@ class FriendManager extends AbstractManager
             /** @var Friend $friend */
             foreach ($data as $friend) {
                 $array[] = [
-                    'id'       => $friend->getFriend()->getId(),
-                    'lastName' => $friend->getFriend()->getLastName(),
-                    'firsName' => $friend->getFriend()->getFirstName(),
-                    'phone'    => $friend->getFriend()->getPhone(),
-                    'email'    => $friend->getFriend()->getEmail(),
-                    'picture'  => $friend->getFriend()->getPicture(),
+                    'id'           => $friend->getFriend()->getId(),
+                    'lastName'     => $friend->getFriend()->getLastName(),
+                    'firsName'     => $friend->getFriend()->getFirstName(),
+                    'phone'        => $friend->getFriend()->getPhone(),
+                    'email'        => $friend->getFriend()->getEmail(),
+                    'picture'      => $friend->getFriend()->getPicture(),
+                    'description'  => $friend->getFriend()->getDescription(),
+                    'street'       => $friend->getFriend()->getStreet(),
+                    'streetNumber' => $friend->getFriend()->getStreetNumber(),
+                    'city'         => null !== $friend->getFriend()->getCity() ? $friend->getFriend()->getCity()->getName() : null,
+                    'longitude'    => null !== $friend->getFriend()->getCity() ? $friend->getFriend()->getCity()->getLongitude() : null,
+                    'latitude'     => null !== $friend->getFriend()->getCity() ? $friend->getFriend()->getCity()->getLatitude() : null,
                 ];
             }
 
