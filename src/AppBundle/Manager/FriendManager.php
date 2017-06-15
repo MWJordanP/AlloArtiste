@@ -103,6 +103,7 @@ class FriendManager extends AbstractManager
                 $array[] = [
                     'id'           => $friend->getFriend()->getId(),
                     'lastName'     => $friend->getFriend()->getLastName(),
+                    'username'     => $friend->getFriend()->getUsername(),
                     'firsName'     => $friend->getFriend()->getFirstName(),
                     'phone'        => $friend->getFriend()->getPhone(),
                     'email'        => $friend->getFriend()->getEmail(),
@@ -119,11 +120,19 @@ class FriendManager extends AbstractManager
             return $array;
         } else {
             return [
-                'id'       => $data->getFriend()->getId(),
-                'lastName' => $data->getFriend()->getLastName(),
-                'firsName' => $data->getFriend()->getFirstName(),
-                'phone'    => $data->getFriend()->getPhone(),
-                'email'    => $data->getFriend()->getEmail(),
+                'id'           => $data->getFriend()->getId(),
+                'lastName'     => $data->getFriend()->getLastName(),
+                'username'     => $data->getFriend()->getUsername(),
+                'firsName'     => $data->getFriend()->getFirstName(),
+                'phone'        => $data->getFriend()->getPhone(),
+                'email'        => $data->getFriend()->getEmail(),
+                'picture'      => $data->getFriend()->getPicture(),
+                'description'  => $data->getFriend()->getDescription(),
+                'street'       => $data->getFriend()->getStreet(),
+                'streetNumber' => $data->getFriend()->getStreetNumber(),
+                'city'         => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getName() : null,
+                'longitude'    => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getLongitude() : null,
+                'latitude'     => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getLatitude() : null,
             ];
         }
     }

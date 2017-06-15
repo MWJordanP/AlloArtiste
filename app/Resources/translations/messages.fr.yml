@@ -39,53 +39,213 @@ app:
             argument: >
                 - username => pjordan</br>
                 - password => xxx
+            back: >
+                Dans RESPONSE<br>
+                - id<br>
+                - username<br>
+                - lastName<br>
+                - firsName<br>
+                - phone<br>
+                - email<br>
+                - images<br>
+                - description<br>
+                - picture<br>
+                - token<br>
+                - street<br>
+                - streetNumber<br>
+                - job<br>
+                - tags ( ATTENTION ARRAY )<br>
+                - city<br>
+                - longitude<br>
+                - latitude<br>
         user:
             title: (USER) Liste des utilisateurs
             change_password:
                 title: Changement de mot de passe
                 argument: >
                     - username => pjordan
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
             add_image:
                 title: Ajout d'une image
                 argument: >
                     - token<br>
                     - image (string)
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
             detail:
                 title: Détail
                 argument: >
                     - id
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
         contact:
             title: (CONTACT)
             list:
                 title: Liste des contacts d'un utilisateur
                 argument: >
                     - token
+                back: >
+                    ATTENTION RENVOI UN ARRAY DE CONTACT<br>
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - description<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
             add:
                 title: Ajouter un contact
                 argument: >
                     - token<br>
                     - id (de l'utilisateur à ajouter)
+                back: >
+                    ATTENTION RENVOI UN ARRAY DE CONTACT<br>
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - description<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
         city:
             title: (CITY) Liste des urls
             all: Liste compléte des villes
+            back: >
+                Dans RESPONSE<br>
+                - id<br>
+                - name<br>
+                - simpleName<br>
+                - zipCode<br>
+                - latitude<br>
+                - longitude<br>
         job:
             title: (JOB) Liste des urls
             all: Liste compléte des jobs
+            back: >
+                Dans RESPONSE<br>
+                - id<br>
+                - name<br>
             add:
                 title: Ajouter un job
                 argument: >
                     - token<br>
                     - id du job<br>
                     - METHODE POST
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
         tag:
             title: (TAG) Liste des urls
             all: Liste compléte des tags
+            back: >
+                Dans RESPONSE<br>
+                - id<br>
+                - name<br>
             add:
                 title: Ajouter un tag
                 argument: >
                     - token<br>
                     - tag (string)<br>
                     - METHODE POST
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
         search:
             title: (SEARCH) Liste des urls
             search:
@@ -95,6 +255,25 @@ app:
                     - id job (non obligatoire)<br>
                     - id tag (non obligatoire)<br>
                     - METHODE POST
+                back: >
+                    ATTENTION ARRAY D'UTILISATEUR
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images<br>
+                    - description<br>
+                    - picture<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job<br>
+                    - tags ( ATTENTION ARRAY )<br>
+                    - city<br>
+                    - longitude<br>
+                    - latitude<br>
 admin:
     menu:
         home: Accueil

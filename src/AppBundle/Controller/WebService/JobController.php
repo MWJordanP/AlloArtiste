@@ -39,7 +39,7 @@ class JobController extends Controller
      *
      * @Route("/add", name="web_service_job_add")
      */
-    public function addTag(Request $request)
+    public function addAction(Request $request)
     {
         $token = $request->request->get('token');
         $job   = $request->request->get('id');

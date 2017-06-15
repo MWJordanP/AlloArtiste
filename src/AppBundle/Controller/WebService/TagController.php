@@ -39,7 +39,7 @@ class TagController extends Controller
      *
      * @Route("/add", name="web_service_tag_add")
      */
-    public function addTag(Request $request)
+    public function addAction(Request $request)
     {
         $token = $request->request->get('token');
         $tag   = $request->request->get('tag');
@@ -52,7 +52,7 @@ class TagController extends Controller
                 $tags = $tagManager->getByUser($user);
 
                 return new JsonResponse([
-                    'response' => $tagManager->convertArray($tags),
+                    'response' => $userManager->convertArray($user),
                     'error'    => null,
                     'status'   => true,
                 ]);
