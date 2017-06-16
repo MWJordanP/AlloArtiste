@@ -168,4 +168,54 @@ class UserController extends Controller
             'status'   => false,
         ]);
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     *
+     * @Route("/register", name="web_service_user_register")
+     */
+    public function registerArtist(Request $request)
+    {
+        $username  = $request->request->get('username');
+        $password  = $request->request->get('password');
+        $email     = $request->request->get('email');
+        $firstName = $request->request->get('firstName');
+        $lastName  = $request->request->get('lastName');
+
+        if (!empty($username) && !empty($password) && !empty($email) && !empty($firstName) && !empty($lastName)) {
+            $userManager = $this->get('app.manager.user');
+            $user        = new User();
+            $user
+                ->setFirstName($firstName)
+                ->setLastName($lastName)
+                ->setUsername($username)
+                ->setPlainPassword($password)
+                ->setEmail($email)
+                ->setEnabled(true);
+
+            try {
+                $userManager->userManager->updateUser($user);
+
+                return new JsonResponse([
+                    'response' => $userManager->convertArray($user),
+                    'status'   => true,
+                    'error'    => null,
+                ]);
+            } catch (\Exception $exception) {
+                return new JsonResponse([
+                    'response' => null,
+                    'error'    => $exception->getMessage(),
+                    'status'   => false,
+                ]);
+            }
+        }
+
+        return new JsonResponse([
+            'response' => null,
+            'error'    => $this->get('translator')->trans('error.user.register_not_found'),
+            'status'   => false,
+        ]);
+    }
 }

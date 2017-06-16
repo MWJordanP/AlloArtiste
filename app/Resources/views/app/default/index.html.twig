@@ -68,6 +68,13 @@
                         {{ 'app.home.user.list_height.argument'|trans|raw }}<br>
                         {{ 'app.home.user.list_height.back'|trans|raw }}
                     </p>
+                    <p class="well">
+                        <a href="{{ path('web_service_user_register') }}" target="_blank">
+                            {{ 'app.home.user.register.title'|trans }}
+                        </a> : {{ absolute_url(path('web_service_user_register')) }}<br>
+                        {{ 'app.home.user.register.argument'|trans|raw }}<br>
+                        {{ 'app.home.user.register.back'|trans|raw }}
+                    </p>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ common:
 error:
     user:
         not_found: User not found
+        register_not_found: Value is empty
         token_image_empty: Token or image is empty
         id_empty: Id is empty
         id_token_empty: Id or token is empty
@@ -49,7 +50,7 @@ app:
                 - id<br>
                 - username<br>
                 - lastName<br>
-                - firsName<br>
+                - firstName<br>
                 - phone<br>
                 - email<br>
                 - images (ATTENTION ARRAY) contient - name<br>
@@ -74,7 +75,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - id/name<br>
@@ -97,7 +98,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
@@ -121,7 +122,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
@@ -146,7 +147,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
@@ -169,7 +170,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
@@ -188,7 +189,7 @@ app:
                 argument: >
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - description<br>
@@ -204,7 +205,35 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
+                    - phone<br>
+                    - email<br>
+                    - images (ATTENTION ARRAY) contient - name<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job (ATTENTION ARRAY -id/ - name )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
+                    - city (ATTENTION ARRAY -id / - name )<br>
+                    - longitude<br>
+                    - latitude<br>
+            register:
+                title: Add Utilisateur (ATTENTION NE PAS METTRE DEUX FOIS LE MÊME USERNAME OU EMAIL)
+                argument: >
+                    - username<br>
+                    - lastName<br>
+                    - firstName<br>
+                    - password<br>
+                    - email<br>
+                    - METHODE POST
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
@@ -282,7 +311,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
@@ -322,7 +351,7 @@ app:
                     - id<br>
                     - username<br>
                     - lastName<br>
-                    - firsName<br>
+                    - firstName<br>
                     - phone<br>
                     - email<br>
                     - images (ATTENTION ARRAY) contient - name<br>
