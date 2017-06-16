@@ -32,13 +32,6 @@ class Picture
     protected $name;
 
     /**
-     * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="pictures")
-     */
-    protected $user;
-
-    /**
      * @return int
      */
     public function getId()
@@ -74,26 +67,6 @@ class Picture
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return Picture
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
 
         return $this;
     }

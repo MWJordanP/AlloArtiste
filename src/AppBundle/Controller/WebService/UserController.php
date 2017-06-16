@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\WebService;
 
+use AppBundle\Entity\Picture;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -59,13 +60,15 @@ class UserController extends Controller
      */
     public function addImageAction(Request $request)
     {
-        $token = $request->request->get('token');
-        $image = $request->request->get('image');
+        $token = $request->get('token');
+        $image = $request->get('image');
         if (!empty($token) && is_string($token) && !empty($image) && is_string($image)) {
             $userManager = $this->get('app.manager.user');
             $user        = $userManager->getToken($token);
             if (null !== $user) {
-                $user->setPicture($image);
+                $picture = new Picture();
+                $picture->setName($image);
+                $user->setPicture($picture);
                 $userManager->save($user);
 
                 return new JsonResponse([

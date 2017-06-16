@@ -59,9 +59,10 @@ class User extends BaseUser
     protected $description;
 
     /**
-     * @var string
+     * @var Picture
      *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Picture", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     protected $picture;
 
@@ -117,7 +118,8 @@ class User extends BaseUser
     /**
      * @var Picture[]|ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Picture", mappedBy="user")
+     * @ORM\ManyToMany(targetEntity="Picture", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     protected $pictures;
 
@@ -355,7 +357,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return string
+     * @return Picture
      */
     public function getPicture()
     {
@@ -363,13 +365,33 @@ class User extends BaseUser
     }
 
     /**
-     * @param string $picture
+     * @param Picture $picture
      *
      * @return User
      */
     public function setPicture($picture)
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * @return Picture[]|ArrayCollection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * @param Picture[]|ArrayCollection $pictures
+     *
+     * @return User
+     */
+    public function setPictures($pictures)
+    {
+        $this->pictures = $pictures;
 
         return $this;
     }
@@ -470,6 +492,21 @@ class User extends BaseUser
             return [
                 'id'   => $this->job->getId(),
                 'name' => $this->job->getName(),
+            ];
+        }
+
+        return null;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function displayPicture()
+    {
+        if (null !== $this->picture) {
+            return [
+                'id'   => $this->picture->getId(),
+                'name' => $this->picture->getName(),
             ];
         }
 
