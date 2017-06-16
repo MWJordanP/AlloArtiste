@@ -103,7 +103,7 @@ class FriendManager extends AbstractManager
                 $array[] = [
                     'id'           => $friend->getFriend()->getId(),
                     'username'     => $friend->getFriend()->getUsername(),
-                    'picture'      => $friend->getFriend()->getPicture(),
+                    'picture'      => $friend->getFriend()->displayPicture(),
                     'street'       => $friend->getFriend()->getStreet(),
                     'streetNumber' => $friend->getFriend()->getStreetNumber(),
                     'job'          => $friend->getFriend()->displayJob(),
@@ -118,7 +118,7 @@ class FriendManager extends AbstractManager
             return [
                 'id'           => $data->getFriend()->getId(),
                 'username'     => $data->getFriend()->getUsername(),
-                'picture'      => $data->getFriend()->getPicture(),
+                'picture'      => $data->getFriend()->displayPicture(),
                 'street'       => $data->getFriend()->getStreet(),
                 'streetNumber' => $data->getFriend()->getStreetNumber(),
                 'job'          => $data->getFriend()->displayJob(),

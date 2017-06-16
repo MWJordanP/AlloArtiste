@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class SearchController
@@ -24,9 +23,9 @@ class SearchController extends Controller
      */
     public function searchAction(Request $request)
     {
-        $city        = $request->request->get('city');
-        $job         = $request->request->get('job');
-        $tag         = $request->request->get('tag');
+        $city        = $request->get('city');
+        $job         = $request->get('job');
+        $tag         = $request->get('tag');
         $userManager = $this->get('app.manager.user');
         $users       = $userManager->search($city, $job, $tag);
 
