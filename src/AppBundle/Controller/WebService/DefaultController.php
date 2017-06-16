@@ -22,7 +22,14 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return new JsonResponse('success');
+        $userManager = $this->get('app.manager.user');
+        $users       = $userManager->repository->findBy([], ['id' => 'DESC'], 8);
+
+        return new JsonResponse([
+            'response' => $userManager->convertArray($users),
+            'error'    => null,
+            'status'   => true,
+        ]);
     }
 
     /**

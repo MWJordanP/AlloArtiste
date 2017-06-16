@@ -49,7 +49,6 @@ class TagController extends Controller
             if (null !== $user) {
                 $tagManager = $this->get('app.manager.tag');
                 $tagManager->create($user, $tag);
-                $tags = $tagManager->getByUser($user);
 
                 return new JsonResponse([
                     'response' => $userManager->convertArray($user),

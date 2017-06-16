@@ -19,7 +19,7 @@ class UserManager extends AbstractManager
     /**
      * @var EntityRepository
      */
-    protected $repository;
+    public $repository;
 
     /**
      * @var BaseUser

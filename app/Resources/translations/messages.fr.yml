@@ -65,6 +65,29 @@ app:
                 - latitude<br>
         user:
             title: (USER) Liste des utilisateurs
+            list_height:
+                title: Récupérer 8 users
+                argument: >
+                    - Pas d'argument
+                back: >
+                    Dans RESPONSE<br>
+                    - id<br>
+                    - username<br>
+                    - lastName<br>
+                    - firsName<br>
+                    - phone<br>
+                    - email<br>
+                    - images (ATTENTION ARRAY) contient - id/name<br>
+                    - description<br>
+                    - picture<br>
+                    - token<br>
+                    - street<br>
+                    - streetNumber<br>
+                    - job (ATTENTION ARRAY -id/ - name )<br>
+                    - tags ( ATTENTION ARRAY contient - name )<br>
+                    - city (ATTENTION ARRAY -id / - name )<br>
+                    - longitude<br>
+                    - latitude<br>
             change_password:
                 title: Changement de mot de passe
                 argument: >
