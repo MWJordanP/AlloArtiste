@@ -178,17 +178,17 @@ class UserManager extends AbstractManager
      */
     public function updateProfile(Request $request, User $user)
     {
-        $username     = $request->get('username');
-        $lastName     = $request->get('lastName');
-        $firstName    = $request->get('firstName');
-        $email        = $request->get('email');
-        $streetNumber = $request->get('streetNumber');
-        $phone        = $request->get('phone');
-        $street       = $request->get('street');
-        $job          = $request->get('job');
-        $tags         = $request->get('tags');
-        $city         = $request->get('city');
-        $description  = $request->get('description');
+        $username     = $request->request->get('username');
+        $lastName     = $request->request->get('lastName');
+        $firstName    = $request->request->get('firstName');
+        $email        = $request->request->get('email');
+        $streetNumber = $request->request->get('streetNumber');
+        $phone        = $request->request->get('phone');
+        $street       = $request->request->get('street');
+        $job          = $request->request->get('job');
+        $tags         = $request->request->get('tags');
+        $city         = $request->request->get('city');
+        $description  = $request->request->get('description');
 
         $job  = $this->em->getRepository('AppBundle:Job')->findOneBy(['id' => intval($job)]);
         $city = $this->em->getRepository('AppBundle:City')->findOneBy(['id' => intval($city)]);

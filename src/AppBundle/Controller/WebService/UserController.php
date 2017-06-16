@@ -142,7 +142,7 @@ class UserController extends Controller
      */
     public function updateProfileAction(Request $request)
     {
-        $token       = $request->get('token');
+        $token       = $request->request->get('token');
         $userManager = $this->get('app.manager.user');
         $user        = $userManager->getToken($token);
         if (null !== $user) {
