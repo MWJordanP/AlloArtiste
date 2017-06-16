@@ -129,7 +129,7 @@ class UserManager extends AbstractManager
                     'id'           => $user->getId(),
                     'username'     => $user->getUsername(),
                     'lastName'     => $user->getLastName(),
-                    'firsName'     => $user->getFirstName(),
+                    'firstName'    => $user->getFirstName(),
                     'phone'        => $user->getPhone(),
                     'email'        => $user->getEmail(),
                     'images'       => $user->displayPictures(),
@@ -152,7 +152,7 @@ class UserManager extends AbstractManager
                 'id'           => $data->getId(),
                 'username'     => $data->getUsername(),
                 'lastName'     => $data->getLastName(),
-                'firsName'     => $data->getFirstName(),
+                'firstName'    => $data->getFirstName(),
                 'phone'        => $data->getPhone(),
                 'email'        => $data->getEmail(),
                 'images'       => $data->displayPictures(),
@@ -178,17 +178,17 @@ class UserManager extends AbstractManager
      */
     public function updateProfile(Request $request, User $user)
     {
-        $username     = $request->request->get('username');
-        $lastName     = $request->request->get('lastName');
-        $firsName     = $request->request->get('firsName');
-        $email        = $request->request->get('email');
-        $streetNumber = $request->request->get('streetNumber');
-        $phone        = $request->request->get('phone');
-        $street       = $request->request->get('street');
-        $job          = $request->request->get('job');
-        $tags         = $request->request->get('tags');
-        $city         = $request->request->get('city');
-        $description  = $request->request->get('description');
+        $username     = $request->get('username');
+        $lastName     = $request->get('lastName');
+        $firstName    = $request->get('firstName');
+        $email        = $request->get('email');
+        $streetNumber = $request->get('streetNumber');
+        $phone        = $request->get('phone');
+        $street       = $request->get('street');
+        $job          = $request->get('job');
+        $tags         = $request->get('tags');
+        $city         = $request->get('city');
+        $description  = $request->get('description');
 
         $job  = $this->em->getRepository('AppBundle:Job')->findOneBy(['id' => intval($job)]);
         $city = $this->em->getRepository('AppBundle:City')->findOneBy(['id' => intval($city)]);
@@ -203,20 +203,23 @@ class UserManager extends AbstractManager
         $user
             ->setUsername($username)
             ->setLastName($lastName)
-            ->setFirstName($firsName)
+            ->setFirstName($firstName)
             ->setEmail($email)
             ->setPhone($phone)
             ->setStreet($street)
             ->setStreetNumber($streetNumber)
             ->setDescription($description);
 
-        $user->getTags()->clear();
-
-        foreach ($tags as $value) {
-            $tag = $this->em->getRepository('AppBundle:Tag')->findOneBy(['id' => intval($value)]);
-            if (null !== $tag) {
-                if (!$user->getTags()->contains($tag)) {
-                    $user->getTags()->add($tag);
+        if (null !== $tags) {
+            if (is_array($tags)) {
+                $user->getTags()->clear();
+                foreach ($tags as $value) {
+                    $tag = $this->em->getRepository('AppBundle:Tag')->findOneBy(['id' => intval($value)]);
+                    if (null !== $tag) {
+                        if (!$user->getTags()->contains($tag)) {
+                            $user->getTags()->add($tag);
+                        }
+                    }
                 }
             }
         }

@@ -142,14 +142,12 @@ class UserController extends Controller
      */
     public function updateProfileAction(Request $request)
     {
-        $token       = $request->request->get('token');
+        $token       = $request->get('token');
         $userManager = $this->get('app.manager.user');
         $user        = $userManager->getToken($token);
         if (null !== $user) {
             $check = $userManager->updateProfile($request, $user);
             if ($check === true) {
-                $user = $userManager->userManager->reloadUser($user);
-
                 return new JsonResponse([
                     'response' => $userManager->convertArray($user),
                     'error'    => null,
