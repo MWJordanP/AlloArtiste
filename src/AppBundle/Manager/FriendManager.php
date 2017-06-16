@@ -106,8 +106,8 @@ class FriendManager extends AbstractManager
                     'picture'      => $friend->getFriend()->getPicture(),
                     'street'       => $friend->getFriend()->getStreet(),
                     'streetNumber' => $friend->getFriend()->getStreetNumber(),
-                    'job'          => null !== $friend->getFriend()->getJob() ? $friend->getFriend()->getJob()->getName() : null,
-                    'city'         => null !== $friend->getFriend()->getCity() ? $friend->getFriend()->getCity()->getName() : null,
+                    'job'          => $friend->getFriend()->displayJob(),
+                    'city'         => $friend->getFriend()->displayCity(),
                     'longitude'    => null !== $friend->getFriend()->getCity() ? $friend->getFriend()->getCity()->getLongitude() : null,
                     'latitude'     => null !== $friend->getFriend()->getCity() ? $friend->getFriend()->getCity()->getLatitude() : null,
                 ];
@@ -121,8 +121,8 @@ class FriendManager extends AbstractManager
                 'picture'      => $data->getFriend()->getPicture(),
                 'street'       => $data->getFriend()->getStreet(),
                 'streetNumber' => $data->getFriend()->getStreetNumber(),
-                'job'          => null !== $data->getFriend()->getJob() ? $data->getFriend()->getJob()->getName() : null,
-                'city'         => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getName() : null,
+                'job'          => $data->getFriend()->displayJob(),
+                'city'         => $data->getFriend()->displayCity(),
                 'longitude'    => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getLongitude() : null,
                 'latitude'     => null !== $data->getFriend()->getCity() ? $data->getFriend()->getCity()->getLatitude() : null,
             ];
