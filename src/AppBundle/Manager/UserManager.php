@@ -183,30 +183,37 @@ class UserManager extends AbstractManager
         $firsName     = $request->request->get('firsName');
         $email        = $request->request->get('email');
         $streetNumber = $request->request->get('streetNumber');
+        $phone        = $request->request->get('phone');
         $street       = $request->request->get('street');
         $job          = $request->request->get('job');
         $tags         = $request->request->get('tags');
         $city         = $request->request->get('city');
         $description  = $request->request->get('description');
 
-        $job  = $this->em->getRepository('AppBundle:Job')->find($job);
-        $city = $this->em->getRepository('AppBundle:City')->find($city);
+        $job  = $this->em->getRepository('AppBundle:Job')->findOneBy(['id' => intval($job)]);
+        $city = $this->em->getRepository('AppBundle:City')->findOneBy(['id' => intval($city)]);
+
+        if (null !== $job && $job !== $user->getJob()) {
+            $user->setJob($job);
+        }
+        if (null !== $city && $city !== $user->getCity()) {
+            $user->setCity($city);
+        }
 
         $user
             ->setUsername($username)
             ->setLastName($lastName)
             ->setFirstName($firsName)
             ->setEmail($email)
+            ->setPhone($phone)
             ->setStreet($street)
             ->setStreetNumber($streetNumber)
-            ->setDescription($description)
-            ->setJob($job)
-            ->setCity($city);
+            ->setDescription($description);
 
         $user->getTags()->clear();
 
         foreach ($tags as $value) {
-            $tag = $this->em->getRepository('AppBundle:Tag')->find($value);
+            $tag = $this->em->getRepository('AppBundle:Tag')->findOneBy(['id' => intval($value)]);
             if (null !== $tag) {
                 if (!$user->getTags()->contains($tag)) {
                     $user->getTags()->add($tag);
@@ -219,7 +226,7 @@ class UserManager extends AbstractManager
 
             return true;
         } catch (\Exception $exception) {
-            return false;
+            return $exception->getMessage();
         }
     }
 

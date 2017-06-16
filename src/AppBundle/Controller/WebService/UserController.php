@@ -147,7 +147,9 @@ class UserController extends Controller
         $user        = $userManager->getToken($token);
         if (null !== $user) {
             $check = $userManager->updateProfile($request, $user);
-            if ($check) {
+            if ($check === true) {
+                $user = $userManager->userManager->reloadUser($user);
+
                 return new JsonResponse([
                     'response' => $userManager->convertArray($user),
                     'error'    => null,
@@ -157,7 +159,7 @@ class UserController extends Controller
 
             return new JsonResponse([
                 'response' => null,
-                'error'    => $this->get('translator')->trans('error.user.error_edit_profile'),
+                'error'    => $check,
                 'status'   => false,
             ]);
         }
