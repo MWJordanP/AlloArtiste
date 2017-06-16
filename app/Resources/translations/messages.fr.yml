@@ -72,6 +72,8 @@ app:
                     - Pas d'argument
                 back: >
                     Dans RESPONSE<br>
+                    ATTENTION ARRAY CONTENANT key users et key slides <br>
+                    - USERS:<br>
                     - id<br>
                     - username<br>
                     - lastName<br>
@@ -89,6 +91,10 @@ app:
                     - city (ATTENTION ARRAY -id / - name )<br>
                     - longitude<br>
                     - latitude<br>
+                    <br><br>
+                    - Slides<br>
+                    - id<br>
+                    - name
             change_password:
                 title: Changement de mot de passe
                 argument: >

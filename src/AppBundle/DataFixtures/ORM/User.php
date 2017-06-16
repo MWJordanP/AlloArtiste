@@ -2,6 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\Picture;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -30,8 +31,12 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface
         ];
 
         foreach ($datas as $key => $data) {
+            $profilePicture = new Picture();
+            $profilePicture->setName('https://res.cloudinary.com/dhtqnerfj/image/upload/v1497534628/2377659.jpg');
+
             $user = new User();
             $user
+                ->setPicture($profilePicture)
                 ->setFirstName($data['firstName'])
                 ->setLastName($data['lastName'])
                 ->setUsername($data['username'])
@@ -46,8 +51,12 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface
         }
 
         for ($i = 0; $i < 20; $i++) {
+            $profilePicture = new Picture();
+            $profilePicture->setName('https://res.cloudinary.com/dhtqnerfj/image/upload/v1497534628/2377659.jpg');
+
             $user = new User();
             $user
+                ->setPicture($profilePicture)
                 ->setDescription($description)
                 ->setCity($this->getReference('city'.$i))
                 ->setJob($this->getReference('job'.$i))
@@ -57,6 +66,11 @@ class UserFixtures extends AbstractFixture implements OrderedFixtureInterface
                 ->setEmail('email'.$i.'@gmail.com')
                 ->setPassword($password)
                 ->setEnabled(true);
+
+            $picture = new Picture();
+            $picture->setName('http://res.cloudinary.com/dhtqnerfj/image/upload/v1497608216/parc-national-de-banff-paysage-canada.jpg');
+
+            $user->getPictures()->add($picture);
 
             for ($e = 0; $e < 2; $e++) {
                 $number = random_int(0, 98);

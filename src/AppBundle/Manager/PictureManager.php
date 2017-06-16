@@ -56,10 +56,11 @@ class PictureManager extends AbstractManager
     {
         $picture = new Picture();
         $picture
-            ->setName($string)
-            ->setUser($user);
+            ->setName($string);
 
-        $this->save($picture);
+        $user->getPictures()->add($picture);
+
+        $this->save($user);
 
         return $picture;
     }

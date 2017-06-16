@@ -22,11 +22,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $userManager = $this->get('app.manager.user');
-        $users       = $userManager->repository->findBy([], ['id' => 'DESC'], 8);
+        $userManager  = $this->get('app.manager.user');
+        $users        = $userManager->repository->findBy([], ['id' => 'DESC'], 8);
+        $slideManager = $this->get('app.manager.slide');
+        $slides       = $slideManager->getList();
 
         return new JsonResponse([
-            'response' => $userManager->convertArray($users),
+            'response' => [
+                'users'  => $userManager->convertArray($users),
+                'slides' => $slideManager->convertArray($slides),
+            ],
             'error'    => null,
             'status'   => true,
         ]);
